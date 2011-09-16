@@ -44,14 +44,17 @@
 
         /* starting point of moule*/
         init: function(){
-            if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)){ var ieversion=new Number(RegExp.$1); if(ieversion<=7){ this.vars.is_ie_lte_7 = true; }}
-            if(typeof window.edys_site_search_options !='undefined'){
-                site_search.extend(site_search.defaults, window.edys_site_search_options);
+            if(typeof edys_site_search_loaded == "undefined"){
+                window.edys_site_search_loaded = true;
+                if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)){ var ieversion=new Number(RegExp.$1); if(ieversion<=7){ this.vars.is_ie_lte_7 = true; }}
+                if(typeof window.edys_site_search_options !='undefined'){
+                    site_search.extend(site_search.defaults, window.edys_site_search_options);
+                }
+                this.add_stylesheet(this.defaults.default_stylesheet);
+                this.get_missing_scripts(function(){
+                     $(document).ready(function() { site_search.after_init();});
+                });
             }
-            this.add_stylesheet(this.defaults.default_stylesheet);
-            this.get_missing_scripts(function(){
-                 site_search.after_init();
-            });
         },
 
         /* starting point of moule after missing scripts added*/
@@ -319,6 +322,9 @@
         /* load need javascripts if they dpo not exist */
           get_missing_scripts: function(f){
             site_search.get_jquery(function(){
+                $(site_search.defaults.search_form).submit(function(){
+                        return false;
+                    });
                 site_search.loadGoogle(f);
             });
         },
