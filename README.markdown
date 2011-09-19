@@ -35,7 +35,7 @@ To configure a javascript object "edys_site_search_options" for configuration ca
         }
     }
 
-Configuration variables:
+Main configuration variables:
     
     without_popup =>  Values (true/false). Default = false. If set to true no popup will be displayed and search results will be displayed inside user defined div (without_popup_element_id).
     without_popup_element_id => the id of div where results are directed when without_popup = true.
@@ -54,4 +54,65 @@ Configuration variables:
     
     popup_position => default = "auto". Values ("auto"/"left"/"right"/"bottom"/"top"). Defines the popup position in regard to the search input.
     
-    display_fin => default = true. Values (false/true). Defines if the little fin is shown beside search popup. With default design set to false if IE6 support is needed.    
+    display_fin => default = true. Values (false/true). Defines if the little fin is shown beside search popup. With default design set to false if IE6 support is needed.
+    
+Additional configuration variables:
+
+    jquery_atleast_version => minimal required jQuery version. Default = "1.5"
+    jquery_url => address where jQuery is obtained if is not present or version is less than jquery_atleast_version. deefault =  "ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"
+    google_api_url => address where google api is lodaded if not allready loaded. defaulot ="http://www.google.com/jsapi"
+    
+    close_btn_class => Object defining classnames of popup close button:
+        general => default = "edys-search-container-close". Should be used for designing.
+        system =>  default = "edys-sw-search-container-close". Only for the widget itself to recognize objects.
+        
+    noresults_class => Object defining classnames of div shown when 0 results:
+        general => default = "edys-search-container-noresults". Should be used for designing.
+        system =>  default = "edys-sw-search-container-noresults". Only for the widget itself to recognize objects.
+        
+    close_btn_class => Object defining classnames of popup close button:
+        general => default = "edys-search-container-close". Should be used for designing.
+        system =>  default = "edys-sw-search-container-close". Only for the widget itself to recognize objects.
+        
+    popup_class => Object defining classnames of popup:
+        general => default = "edys-search-popup". Should be used for designing.
+        system =>  default = "edys-sw-search-popup". Only for the widget itself to recognize objects.
+        
+    loading_img_class => Object defining classnames of loading image:
+        general => default = "edys-search-loading". Should be used for designing.
+        system =>  default = "edys-sw-search-loading". Only for the widget itself to recognize objects.
+        
+    masking_iframe_class => Object defining classnames of masking iframe:
+        general => default = "edys-search-masking-iframe". Should be used for designing.
+        system =>  default = "edys-sw-search-masking-iframe". Only for the widget itself to recognize objects.
+        
+    fin_class => Object defining classnames of popup fin:
+        general => default = "edys-search-masking-fin". Should be used for designing.
+        system =>  default = "edys-sw-search-masking-fin". Only for the widget itself to recognize objects.
+        
+    fin_left_class => Object defining classnames of popup fin when left of search input:
+        general => default = "edys-search-masking-fin-left". Should be used for designing.
+        system =>  default = "edys-sw-search-masking-fin-left". Only for the widget itself to recognize objects.
+
+    fin_right_class => Object defining classnames of popup fin when left of search input:
+        general => default = "edys-search-masking-fin-right". Should be used for designing.
+        system =>  default = "edys-sw-search-masking-fin-right". Only for the widget itself to recognize objects.
+     
+    fin_top_class => Object defining classnames of popup fin when left of search input:
+        general => default = "edys-search-masking-fin-top". Should be used for designing.
+        system =>  default = "edys-sw-search-masking-fin-top". Only for the widget itself to recognize objects.
+        
+    fin_bottom_class => Object defining classnames of popup fin when left of search input:
+        general => default = "edys-search-masking-fin-bottom". Should be used for designing.
+        system =>  default = "edys-sw-search-masking-fin-bottom". Only for the widget itself to recognize objects.
+        
+    default_popup_style => default css that will be added to popup on initiation. default = {position:"absolute",display:"none" }
+    default_closebtn_style => default css that will be added to popup closebutton on initiation. default = {cursor:"pointer"}
+    fin_style => default css that will be added to popup fin on initiation. default = {}
+    
+    default_stylesheet => the default styleshees css that will be added if front of all stylesheets to document head.
+    
+#Comments  
+    
+    Mutiple search boxes can be applied accross the page. 
+    Also multiple js files can be loaded, but only the first is initiated. Code detects that search is loaded and does not continue.
