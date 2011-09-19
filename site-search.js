@@ -29,6 +29,10 @@
             popup_position: "auto",
             fin_style: {  },
             display_fin: true, /* disable to support ie6 */
+            
+                     without_popup: false,
+                         without_popup_element_id: "",
+                         without_popup_noresults_id: "",
             texts: {
                 close: "Close",
                 noresults: "Your search did not match any documents"
@@ -47,9 +51,9 @@
             if(typeof edys_site_search_loaded == "undefined"){
                 window.edys_site_search_loaded = true;
                 if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)){ var ieversion=new Number(RegExp.$1); if(ieversion<=7){ this.vars.is_ie_lte_7 = true; }}
-                if(typeof window.edys_site_search_options !='undefined'){
+                 if(typeof edys_site_search_options !='undefined'){
                     site_search.extend(site_search.defaults, window.edys_site_search_options);
-                }
+                 }
                 this.add_stylesheet(this.defaults.default_stylesheet);
                 this.get_missing_scripts(function(){
                      $(document).ready(function() { site_search.after_init();});
@@ -88,6 +92,7 @@
                             left:(pos.left+(pos.width-loader.width()))+"px",
                             visibility:"visible"
                          });
+                         
                     }
                    /* send search string to google and disable submitting form  */
                     var searchstring = this_frm.find(site_search.defaults.search_input).val();
@@ -98,28 +103,30 @@
                     return false;
                 });
             });
-
-            /* configure google search and delegate it to a hidden div for popup on demand */
-            var search_popup = $('<div></div>').addClass(this.defaults.popup_class.system).addClass(this.defaults.popup_class.general).css(this.defaults.default_popup_style);
-            /* make masking frame so flash and other browser mistakes do not show through */
-            var search_iframe = $("<iframe></iframe>").addClass(this.defaults.masking_iframe_class.system).addClass(this.defaults.masking_iframe_class.general).hide();
-             $(document.body).prepend(search_iframe,search_popup);
-            this.configure_google_search(search_popup.get(0));
-
-            /* make a popup close btn and noresults box */
-            var noresults = $('<div></div>').addClass(this.defaults.noresults_class.system).addClass(this.defaults.noresults_class.general).html(this.defaults.texts.noresults);
-            var close_btn = $("<div></div>").addClass(this.defaults.close_btn_class.system).addClass(this.defaults.close_btn_class.general).css(this.defaults.default_closebtn_style).html(this.defaults.texts.close).click(function(){
-                $('.'+site_search.defaults.popup_class.system).hide();
-                $('.'+site_search.defaults.masking_iframe_class.system).hide();
-            });
-             search_popup.prepend(close_btn,noresults);
-
-            if(this.defaults.display_fin){
-                var fin = $("<div></div>").addClass(this.defaults.fin_class.system).addClass(this.defaults.fin_class.general).css(this.defaults.fin_style);
-                search_popup.prepend(fin)
-             }
+            
+            if(!this.defaults.without_popup){
+                /* configure google search and delegate it to a hidden div for popup on demand */
+                var search_popup = $('<div></div>').addClass(this.defaults.popup_class.system).addClass(this.defaults.popup_class.general).css(this.defaults.default_popup_style);
+                /* make masking frame so flash and other browser mistakes do not show through */
+                var search_iframe = $("<iframe></iframe>").addClass(this.defaults.masking_iframe_class.system).addClass(this.defaults.masking_iframe_class.general).hide();
+                 $(document.body).prepend(search_iframe,search_popup);
+                this.configure_google_search(search_popup.get(0));
+                /* make a popup close btn and noresults box */
+                var noresults = $('<div></div>').addClass(this.defaults.noresults_class.system).addClass(this.defaults.noresults_class.general).html(this.defaults.texts.noresults);
+                var close_btn = $("<div></div>").addClass(this.defaults.close_btn_class.system).addClass(this.defaults.close_btn_class.general).css(this.defaults.default_closebtn_style).html(this.defaults.texts.close).click(function(){
+                    $('.'+site_search.defaults.popup_class.system).hide();
+                    $('.'+site_search.defaults.masking_iframe_class.system).hide();
+                });
+                search_popup.prepend(close_btn,noresults);
+                if(this.defaults.display_fin){
+                    var fin = $("<div></div>").addClass(this.defaults.fin_class.system).addClass(this.defaults.fin_class.general).css(this.defaults.fin_style);
+                    search_popup.prepend(fin)
+                 }
+            } else {
+                this.configure_google_search($("#"+this.defaults.without_popup_element_id).get(0));
+            }
             $(document.body).prepend(search_popup);
-            search_popup.find(".gsc-search-box").hide();
+             if(!this.defaults.without_popup){ search_popup.find(".gsc-search-box").hide(); } else { $("#"+this.defaults.without_popup_element_id).find(".gsc-search-box").hide(); }
         },
 
         /* position the popup and check if out of bounds */
@@ -300,23 +307,32 @@
 
         search_complete: function (input){
              var nr_of_results = $(".gsc-stats").html();
-             var class_string ='.'+site_search.defaults.popup_class.system+' .'+site_search.defaults.noresults_class.system;
+             if(!site_search.defaults.without_popup){
+                var class_string ='.'+site_search.defaults.popup_class.system+' .'+site_search.defaults.noresults_class.system;
+             } else {
+                var class_string= "#"+site_search.defaults.without_popup_noresults_id;
+             }
             if (nr_of_results == "(0)") {
                 $(class_string).show();
             } else {
                 $(class_string).hide();
             }
-
-            var pop = $('.'+this.defaults.popup_class.system);
-            pop.css({visibility:"hidden"}).show();
-            if(typeof(input) != 'undefined' ){
-                site_search.position_popup.go(pop,input);
-                $("."+site_search.defaults.masking_iframe_class.system).show();
+           
+            if(!this.defaults.without_popup){
+                var pop = $('.'+this.defaults.popup_class.system);
+                pop.css({visibility:"hidden"}).show();
+                if(typeof(input) != 'undefined' ){
+                    site_search.position_popup.go(pop,input);
+                    $("."+site_search.defaults.masking_iframe_class.system).show();
+                 }
+                pop.css({visibility:"visible"});
              }
-            pop.css({visibility:"visible"});
             if(!site_search.vars.is_ie_lte_7){
                 $("."+this.defaults.loading_img_class.system).remove();
             }
+            
+            
+            
         },
 
         /* load need javascripts if they dpo not exist */

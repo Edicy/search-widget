@@ -6,21 +6,22 @@
   <body>
     Searchbox 1:
     <form class="edys-search" ><input type="text" class="edys-search-input" /></form>
-   <script src="site-search.js" type="text/javascript"> </script>
-   
-   <br/> Searchbox 2 :<br/>
-   <form class="edys-search" style="margin-left: 400px;"><input type="text" class="edys-search-input" /></form>
-
     <!-- example how to preconfigure. not needed though -->
     <script type="text/javascript">
       var edys_site_search_options = {
-         texts: {
-            close: "Sulge",
-            noresults: "Äi leitud midagi!"
-         }
+         without_popup: true,
+         without_popup_element_id: "my-div",
+         without_popup_noresults_id: "my-div-noresults"
       }
     </script>
-
+   <script src="site-search.js" type="text/javascript"> </script>
+   <br/> Searchbox 2 :<br/>
+   <form class="edys-search" style="margin-left: 400px;"><input type="text" class="edys-search-input" /></form>
+    <br/>
+    This is alternative Div where to send searchbox:
+    <div id="my-div" style="border: 10px solid #dddddd;">
+    </div>
+    <div id="my-div-noresults" style="display:none;">Pole tulemusi</div>
     <script src="site-search.js" type="text/javascript"> </script>
   </body>
 </html>
