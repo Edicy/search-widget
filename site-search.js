@@ -29,10 +29,9 @@
             popup_position: "auto",
             fin_style: {  },
             display_fin: true, /* disable to support ie6 */
-            
-                     without_popup: false,
-                         without_popup_element_id: "",
-                         without_popup_noresults_id: "",
+            without_popup: false,
+            without_popup_element_id: "",
+            without_popup_noresults_id: "",
             texts: {
                 close: "Close",
                 noresults: "Your search did not match any documents"
@@ -92,7 +91,7 @@
                             left:(pos.left+(pos.width-loader.width()))+"px",
                             visibility:"visible"
                          });
-                         
+
                     }
                    /* send search string to google and disable submitting form  */
                     var searchstring = this_frm.find(site_search.defaults.search_input).val();
@@ -103,7 +102,7 @@
                     return false;
                 });
             });
-            
+
             if(!this.defaults.without_popup){
                 /* configure google search and delegate it to a hidden div for popup on demand */
                 var search_popup = $('<div></div>').addClass(this.defaults.popup_class.system).addClass(this.defaults.popup_class.general).css(this.defaults.default_popup_style);
@@ -317,7 +316,7 @@
             } else {
                 $(class_string).hide();
             }
-           
+
             if(!this.defaults.without_popup){
                 var pop = $('.'+this.defaults.popup_class.system);
                 pop.css({visibility:"hidden"}).show();
@@ -330,9 +329,9 @@
             if(!site_search.vars.is_ie_lte_7){
                 $("."+this.defaults.loading_img_class.system).remove();
             }
-            
-            
-            
+
+
+
         },
 
         /* load need javascripts if they dpo not exist */
