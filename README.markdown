@@ -58,58 +58,23 @@ Main configuration variables:
     
 Additional configuration variables:
 
-    jquery_atleast_version => minimal required jQuery version. Default = "1.5"
-    jquery_url => address where jQuery is obtained if is not present or version is less than jquery_atleast_version. deefault =  "ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"
     google_api_url => address where google api is lodaded if not allready loaded. defaulot ="http://www.google.com/jsapi"
     
-    close_btn_class => Object defining classnames of popup close button:
-        general => default = "edys-search-container-close". Should be used for designing.
-        system =>  default = "edys-sw-search-container-close". Only for the widget itself to recognize objects.
-        
-    noresults_class => Object defining classnames of div shown when 0 results:
-        general => default = "edys-search-container-noresults". Should be used for designing.
-        system =>  default = "edys-sw-search-container-noresults". Only for the widget itself to recognize objects.
-        
-    close_btn_class => Object defining classnames of popup close button:
-        general => default = "edys-search-container-close". Should be used for designing.
-        system =>  default = "edys-sw-search-container-close". Only for the widget itself to recognize objects.
-        
-    popup_class => Object defining classnames of popup:
-        general => default = "edys-search-popup". Should be used for designing.
-        system =>  default = "edys-sw-search-popup". Only for the widget itself to recognize objects.
-        
-    loading_img_class => Object defining classnames of loading image:
-        general => default = "edys-search-loading". Should be used for designing.
-        system =>  default = "edys-sw-search-loading". Only for the widget itself to recognize objects.
-        
-    masking_iframe_class => Object defining classnames of masking iframe:
-        general => default = "edys-search-masking-iframe". Should be used for designing.
-        system =>  default = "edys-sw-search-masking-iframe". Only for the widget itself to recognize objects.
-        
-    fin_class => Object defining classnames of popup fin:
-        general => default = "edys-search-masking-fin". Should be used for designing.
-        system =>  default = "edys-sw-search-masking-fin". Only for the widget itself to recognize objects.
-        
-    fin_left_class => Object defining classnames of popup fin when left of search input:
-        general => default = "edys-search-masking-fin-left". Should be used for designing.
-        system =>  default = "edys-sw-search-masking-fin-left". Only for the widget itself to recognize objects.
-
-    fin_right_class => Object defining classnames of popup fin when left of search input:
-        general => default = "edys-search-masking-fin-right". Should be used for designing.
-        system =>  default = "edys-sw-search-masking-fin-right". Only for the widget itself to recognize objects.
-     
-    fin_top_class => Object defining classnames of popup fin when left of search input:
-        general => default = "edys-search-masking-fin-top". Should be used for designing.
-        system =>  default = "edys-sw-search-masking-fin-top". Only for the widget itself to recognize objects.
-        
-    fin_bottom_class => Object defining classnames of popup fin when left of search input:
-        general => default = "edys-search-masking-fin-bottom". Should be used for designing.
-        system =>  default = "edys-sw-search-masking-fin-bottom". Only for the widget itself to recognize objects.
-        
+    close_btn_class => classname of popup close button, default = "edys-search-container-close"
+    noresults_class => classname of div shown when 0 results, default = "edys-search-container-noresults". 
+    close_btn_class => classname of popup close button, default = "edys-search-container-close".
+    popup_class => classname of popup, default = "edys-search-popup".
+    loading_img_class => classname of loading image, default = "edys-search-loading".
+    masking_iframe_class => classname of masking iframe, default = "edys-search-masking-iframe".
+    fin_class => classname of popup fin, default = "edys-search-masking-fin".
+    fin_left_class => classname of popup fin when left of search input, default = "edys-search-masking-fin-left".
+    fin_right_class => classname of popup fin when left of search input, default = "edys-search-masking-fin-right".
+    fin_top_class => classname of popup fin when left of search input, default = "edys-search-masking-fin-top".
+    fin_bottom_class => classname of popup fin when left of search input, default = "edys-search-masking-fin-bottom".
     default_popup_style => default css that will be added to popup on initiation. default = {position:"absolute",display:"none" }
+    
     default_closebtn_style => default css that will be added to popup closebutton on initiation. default = {cursor:"pointer"}
     fin_style => default css that will be added to popup fin on initiation. default = {}
-    
     default_stylesheet => the default styleshees css that will be added if front of all stylesheets to document head.
     
 #Comments  
