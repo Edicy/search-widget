@@ -53,8 +53,9 @@ Main configuration variables:
     search_form: class that defines the seach element form. default = ".edys-search",
     
     popup_position => default = "auto". Values ("auto"/"left"/"right"/"bottom"/"top"). Defines the popup position in regard to the search input.
-    
+    popup_min_margin => default = 10; Defines How close to window border popup can position itself in pixels.
     display_fin => default = true. Values (false/true). Defines if the little fin is shown beside search popup. With default design set to false if IE6 support is needed.
+    link_target => default = "_self", Values ("_self" / "_blank" / "_top" / "_parent"). Defines how search links will open. Like link target attribute ("_self" = in the same window, "_blank" = in a new window etc.).
     
 Additional configuration variables:
 
