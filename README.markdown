@@ -56,7 +56,9 @@ Main configuration variables:
     popup_min_margin => default = 10; Defines How close to window border popup can position itself in pixels.
     display_fin => default = true. Values (false/true). Defines if the little fin is shown beside search popup. With default design set to false if IE6 support is needed.
     link_target => default = "_self", Values ("_self" / "_blank" / "_top" / "_parent"). Defines how search links will open. Like link target attribute ("_self" = in the same window, "_blank" = in a new window etc.).
-    
+
+    sideclick_enabled = default => true. Defines if search popup closes when somewhare on page is clicked that is not inside the serach results popup.
+
 Additional configuration variables:
 
     google_api_url => address where google api is lodaded if not allready loaded. defaulot ="http://www.google.com/jsapi"
