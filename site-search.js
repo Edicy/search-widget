@@ -12,7 +12,9 @@
             autorun_init: true,
             autorun_search: true,
             load_jquery: true,
-            load_google: true
+            load_google: true,
+
+            init_complete: null
         },
 
         run: function (){
@@ -24,11 +26,13 @@
                 if ( typeof window.edys_site_search_options.autorun_search !='undefined' ) {
                     this.settings.autorun_search = window.edys_site_search_options.autorun_search;
                 }
+            } else {
+                window.edys_site_search_options = {};
             }
 
             if ( this.settings.autorun_init ){
-                if (typeof edys_site_search_loaded == "undefined") {
-                    window.edys_site_search_loaded = true;
+                if (typeof window.edys_site_search_options.loaded == "undefined") {
+                    window.edys_site_search_options.loaded = true;
                     this.get_missing_scripts( function() {
                         if ( typeof window.edys_site_search_options !='undefined' ) {
                             $.extend(this.settings, window.edys_site_search_options);
@@ -37,7 +41,18 @@
                         if ( this.settings.autorun_search ) {
                             $(document).ready( $.proxy(function() {
                                 $(this.settings.search_form).site_search(this.settings);
+                                if(this.settings.init_complete){
+                                    this.settings.init_complete($);
+                                } else {
+                                    $('body').trigger('Edys_search_init_complete',$);
+                                }
                             },this));
+                        } else {
+                            if(this.settings.init_complete){
+                                this.settings.init_complete($);
+                            } else {
+                                $('body').trigger('Edys_search_init_complete',$);
+                            }
                         }
                     });
                 }
@@ -172,6 +187,7 @@
                 }
 
                 form_element.bind( 'submit.siteSearch', $.proxy(this.submit_form, this) );
+                form_element.data( 'EdysSearchObject', this );
             };
 
             this.init_popup = function(){
@@ -253,6 +269,7 @@
             };
 
             this.submit_form = function(){
+                form_element.trigger('beforeSearch');
                 var input_el = form_element.find( this.settings.search_input ),
                     pos = input_el.offset(),
                     loader = $("<img />").attr({ "src":"data:image/png;base64," + this.settings.loading_image })
@@ -341,6 +358,7 @@
                     $("." + this.settings.system_classes.loading_img).remove();
                 }
 
+                form_element.trigger('afterSearch');
             };
 
             this.position_popup = function ( pop, input ) {
@@ -503,7 +521,7 @@
                     left: newPos.left + "px"
                 });
 
-                $("."+this.settings.system_classes.masking_iframe).css({
+                $("." + this.settings.system_classes.masking_iframe).css({
                     top: newPos.top + "px",
                     left: newPos.left + "px",
                     width: pop.outerWidth(),
@@ -535,10 +553,14 @@
         };
 
         var methods = {
-            init : function( options ) {
+            init: function( options ) {
                 return this.each(function(){
                     new searcher($(this));
                 });
+            },
+
+            get_object: function() {
+                return this.eq(0).data('EdysSearchObject');
             }
         };
 
