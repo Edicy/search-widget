@@ -34,9 +34,7 @@
                 if (typeof window.edys_site_search_options.loaded == "undefined") {
                     window.edys_site_search_options.loaded = true;
                     this.get_missing_scripts( function() {
-                        if ( typeof window.edys_site_search_options !='undefined' ) {
-                            $.extend(this.settings, window.edys_site_search_options);
-                        }
+                        $.extend(this.settings, window.edys_site_search_options);
                         apply_site_search_module($);
                         if ( this.settings.autorun_search ) {
                             $(document).ready( $.proxy(function() {
@@ -115,7 +113,7 @@
 
     /* function to apply site-search module to jquery */
     var apply_site_search_module = function($) {
-        var searcher = function (form_element) {
+        var searcher = function (form_element, user_options) {
             this.settings = {
                 search_input: ".edys-search-input",
 
@@ -549,13 +547,13 @@
                 }
             };
 
-            this.init();
+            this.init( user_options );
         };
 
         var methods = {
             init: function( options ) {
                 return this.each(function(){
-                    new searcher($(this));
+                    new searcher($(this), options);
                 });
             },
 
