@@ -99,6 +99,7 @@ Additional configuration variables:
           $('#element-id').bind('beforeSearch', function(){ alert('foo before'); });
 
   search form elements site_search javascript object bound to it can be called out as follows to access its functions
+
       var obj = $('#element-id').site_search('get_object');
 
   if jquery preloaded you can access module loaded event like this (alernatively to edys_site_search_options.init_complete. If edys_site_search_options.init_complete is set this event is not listened to):
