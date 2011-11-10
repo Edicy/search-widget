@@ -92,10 +92,12 @@ Additional configuration variables:
       $('#element-id').site_search(options);
 
   searc elemets can be listened for two events:
-      event after search by google has executed and poopup shown:
+  event after search by google has executed and poopup shown:
+
           $('#element-id').bind('afterSearch', function(){ alert('foo after'); });
 
-      event before search executed and after form submit
+  event before search executed and after form submit
+
           $('#element-id').bind('beforeSearch', function(){ alert('foo before'); });
 
   search form elements site_search javascript object bound to it can be called out as follows to access its functions
