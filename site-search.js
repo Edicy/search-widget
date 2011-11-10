@@ -1,6 +1,7 @@
 (function() {
     var $ = null;
 
+    /* initialisation module. does load all missing needed javascripts before applying jquery site_search module */
     var site_search_init = {
         settings: {
             jquery_atleast_version: "1.5",
@@ -11,8 +12,6 @@
 
             autorun_init: true,
             autorun_search: true,
-            load_jquery: true,
-            load_google: true,
 
             init_complete: null
         },
@@ -111,8 +110,12 @@
 
     };
 
-    /* function to apply site-search module to jquery */
+    site_search_init.run();
+    /* initialisation module end*/
+
+    /* function to apply site-search module to jquery. can be used as separate if function substituted with jquery wrapper */
     var apply_site_search_module = function($) {
+
         var searcher = function (form_element, user_options) {
             this.settings = {
                 search_input: ".edys-search-input",
@@ -164,19 +167,28 @@
             };
 
             /* varaibles to remember */
+            /* google search vars */
             this.search_control = null;
             this.search_options = null;
             this.search_websearch = null;
+
+            /* module vars */
             this.is_ie_lte_7 =  (typeof($.browser.msie) != "undefined" && parseInt($.browser.version, 10) <= 7) ? true : false;
             this.current_input = null;
             this.search_popup = null;
-            this.search_iframe = null
+            this.search_iframe = null;
+            this.form_element = form_element;
 
-            this.init = function( options ){
+            /* run */
+            this.init( user_options );
+        }
+
+        searcher.prototype = {
+            init: function( options ){
                 if ( options ) { $.extend( this.settings, options ); }
                 if ( this.settings.default_stylesheet_enabled ) { this.add_stylesheet(this.settings.default_stylesheet); }
 
-                var input_el = form_element.find(this.settings.search_input);
+                var input_el = this.form_element.find(this.settings.search_input);
 
                 if ( !this.settings.without_popup ) {
                     this.init_popup();
@@ -184,11 +196,11 @@
                     this.init_without_popup();
                 }
 
-                form_element.bind( 'submit.siteSearch', $.proxy(this.submit_form, this) );
-                form_element.data( 'EdysSearchObject', this );
-            };
+                this.form_element.bind( 'submit.siteSearch', $.proxy(this.submit_form, this) );
+                this.form_element.data( 'EdysSearchObject', this );
+            },
 
-            this.init_popup = function(){
+            init_popup: function(){
                 var search_popup = $('<div></div>').addClass( this.settings.system_classes.popup )
                                                    .addClass( this.settings.popup_class )
                                                    .css( this.settings.default_popup_style ),
@@ -234,9 +246,9 @@
                         this.resize_window(search_popup);
                     }, this));
                 }
-            };
+            },
 
-            this.init_without_popup = function(){
+            init_without_popup: function(){
                 this.configure_google_search({
                    popup_element: $("#"+this.settings.without_popup_element_id).get(0),
                    hostname: this.settings.host_name,
@@ -245,9 +257,9 @@
                 });
 
                 $("#"+this.settings.without_popup_element_id).find(".gsc-search-box").hide();
-            };
+            },
 
-            this.popup_hide = function(){
+            popup_hide: function(){
                 var sd = this.settings;
 
                 if ( sd.sideclick_enabled ) {
@@ -257,18 +269,18 @@
                 $( '.'+sd.system_classes.popup ).hide();
                 $( '.'+sd.system_classes.masking_iframe ).hide();
                 this.current_input = null;
-            };
+            },
 
-            this.resize_window = function(pop) {
+            resize_window: function(pop) {
                 var inp = this.current_input;
                 if(inp !== null){
                     this.position_popup(pop, inp);
                 }
-            };
+            },
 
-            this.submit_form = function(){
-                form_element.trigger('beforeSearch');
-                var input_el = form_element.find( this.settings.search_input ),
+            submit_form: function(){
+                this.form_element.trigger('beforeSearch');
+                var input_el = this.form_element.find( this.settings.search_input ),
                     pos = input_el.offset(),
                     loader = $("<img />").attr({ "src":"data:image/png;base64," + this.settings.loading_image })
                                          .addClass( this.settings.system_classes.loading_img )
@@ -295,9 +307,9 @@
                 this.search_control.setSearchCompleteCallback( this, $.proxy( function() { this.search_complete(input_el); } , this) );
                 this.search_control.execute(searchstring);
                 return false;
-            };
+            },
 
-            this.configure_google_search = function(opts) {
+            configure_google_search: function(opts) {
                 var s_c = this.search_control   = new google.search.SearchControl(),
                     s_o = this.search_options   = new google.search.SearcherOptions(),
                     s_w = this.search_websearch = new google.search.WebSearch();
@@ -322,9 +334,9 @@
                         s_c.setLinkTarget(google.search.Search.LINK_TARGET_SELF);
                 }
                 s_c.draw(opts.popup_element.get(0));
-            };
+            },
 
-            this.search_complete = function(input){
+            search_complete: function(input){
                 var pop = this.search_popup,
                     nr_of_results = pop.find(".gsc-stats").html(),
                     noresults_el = (!this.settings.without_popup) ? pop.find(' .'+this.settings.system_classes.noresults) : $("#" + this.settings.without_popup_noresults_id);
@@ -356,10 +368,10 @@
                     $("." + this.settings.system_classes.loading_img).remove();
                 }
 
-                form_element.trigger('afterSearch');
-            };
+                this.form_element.trigger('afterSearch');
+            },
 
-            this.position_popup = function ( pop, input ) {
+            position_popup: function ( pop, input ) {
                 var viewport = {
                         top: $(window).scrollTop(),
                         left: $(window).scrollLeft(),
@@ -408,9 +420,9 @@
                         this.position_popup_top(pop, input, viewport, input_pos, fin);
                     break;
                 }
-            };
+            },
 
-            this.position_popup_left = function(pop,input,viewport,input_pos,fin) {
+            position_popup_left: function(pop,input,viewport,input_pos,fin) {
                 var newPos = {
                     top: (((input_pos.bottom - input_pos.top) / 2) +input_pos.top) - (pop.outerHeight() / 2),
                     left: (fin !== false) ? input_pos.left - pop.outerWidth() - fin.width : input_pos.left - pop.outerWidth(),
@@ -418,9 +430,9 @@
                     bottom: (((input_pos.bottom - input_pos.top) / 2) + input_pos.top) + (pop.outerHeight() / 2)
                 }
                 this.fix_bounds_and_position(pop, newPos, viewport, input_pos, "left", fin);
-            };
+            },
 
-            this.position_popup_right = function(pop,input,viewport,input_pos,fin) {
+            position_popup_right: function(pop,input,viewport,input_pos,fin) {
                 var newPos = {
                     top: (((input_pos.bottom - input_pos.top) / 2) +input_pos.top) - (pop.outerHeight() / 2),
                     left: (fin !== false) ? input_pos.right + fin.width : input_pos.right,
@@ -428,9 +440,9 @@
                     bottom: (((input_pos.bottom - input_pos.top) / 2) + input_pos.top) + (pop.outerHeight() / 2)
                 }
                 this.fix_bounds_and_position(pop, newPos, viewport, input_pos, "right", fin);
-            };
+            },
 
-            this.position_popup_top = function(pop,input,viewport,input_pos,fin) {
+            position_popup_top: function(pop,input,viewport,input_pos,fin) {
                 var newPos = {
                     top: (fin !== false) ? input_pos.top - pop.outerHeight() - fin.width : input_pos.top - pop.outerHeight(),
                     left: input_pos.left - ((pop.outerWidth() - input_pos.width) / 2),
@@ -438,9 +450,9 @@
                     bottom: (fin !== false) ? input_pos.top - fin.width : input_pos.top
                 }
                 this.fix_bounds_and_position(pop, newPos, viewport, input_pos, "top", fin);
-            };
+            },
 
-            this.position_popup_bottom = function(pop,input,viewport,input_pos,fin) {
+            position_popup_bottom: function(pop,input,viewport,input_pos,fin) {
                 var newPos = {
                     top: (fin !== false) ? input_pos.bottom + fin.width : input_pos.bottom,
                     left: input_pos.left - ((pop.outerWidth() - input_pos.width) / 2),
@@ -448,9 +460,9 @@
                     bottom: (fin !== false) ? input_pos.bottom + pop.outerHeight() + fin.width : input_pos.bottom + pop.outerHeight()
                 }
                 this.fix_bounds_and_position(pop, newPos, viewport, input_pos, "bottom", fin);
-            };
+            },
 
-            this.fix_bounds_and_position = function ( pop, pos,viewport, input_pos, fin_mode, fin ) {
+            fix_bounds_and_position: function ( pop, pos,viewport, input_pos, fin_mode, fin ) {
                 var newPos = pos;
 
                 /* fix popup position */
@@ -525,16 +537,16 @@
                     width: pop.outerWidth(),
                     height: pop.outerHeight()
                 });
-            };
+            },
 
-            this.remove_fin_classes = function ( fin ) {
+            remove_fin_classes: function ( fin ) {
                 fin.removeClass( this.settings.system_classes.fin_left );
                 fin.removeClass( this.settings.system_classes.fin_right );
                 fin.removeClass( this.settings.system_classes.fin_top );
                 fin.removeClass( this.settings.system_classes.fin_bottom );
-            };
+            },
 
-            this.add_stylesheet = function(source) {
+            add_stylesheet: function(source) {
                 if( $(document.head).find('.'+ this.settings.system_classes.default_stylesheet ).length == 0 ){
                     var styles = $("head").children("style, link"),
                         style = $("<style>" + source + "</style>").attr("type", "text/css").addClass( this.settings.system_classes.default_stylesheet );
@@ -545,9 +557,7 @@
                         $("head").append(style);
                     }
                 }
-            };
-
-            this.init( user_options );
+            }
         };
 
         var methods = {
@@ -574,5 +584,4 @@
 
     };
 
-    site_search_init.run();
 })();
