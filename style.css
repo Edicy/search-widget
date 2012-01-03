@@ -12,6 +12,7 @@
 	font: 12px/14px "Helvetica Neue", Helvetica, Arial, sans-serif; 
 	padding: 10px 0px 10px 0px;
 	text-shadow: 0 1px 0 #ffffff;	
+	text-align: left;
 } 
 .edys-sw-search-popup table { border-collapse: collapse; }
 .edys-sw-search-popup .gs-title {
