@@ -148,17 +148,18 @@
                 default_popup_style: {position: "absolute",display: "none"},
                 default_closebtn_style: {cursor: "pointer"},
                 loading_image: "R0lGODlhEAAQALMNAKqon4SCecTBuXd1bZGOhpCPhoSCesPCuXd1bJCOhtDOxre1rJ2bkv///wAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQFCAANACwAAAAAEAAQAAAEUrDJ2daimFqb5xHV1gAAdnwgR5LUKYDTWrYwxU6K0k0M0+S5Xa8H1HWGvuCu0aMMEJlEAjN4QicF6XRSRUADgUZWikEMGgYDuEEgLNPr5UTdiQAAIfkEBQgADQAsAAAAABAAEAAABEiwydnOoZham6dS1dYsC/Z94UiW3kmtbJuRFIJ0EwA0to3rut6tA9z5cA0dxWDIMBgYJpPyfC6ljUSiUYVes9qtFRfeIifaTgQAIfkEBQgADQAsAAAAABAAEAAABEiwydmUophamydC1dYcB/Z94UiW3kmtbJuRlGF007I0to3rut6tA9z5cA0dJZHIAAAYJpPyfC6lDQajUYVes9qtFRfeIifaTgQAIfkEBQgADQAsAAAAABAADgAABD6wydkQopham6cx1dYoCvZ94UiW3kmtbJuRVJJ003E0to3rut6tA9z5cA0dhcHILBYYJpPyfC6l1Gq0ibFKIgAh+QQFCAANACwAAAAAEAAQAAAEQrDJ2YyhmFqbZ0rV1iAI9n3hSJbeSa1sm5EUw3STojS2jeu63q0D3PlwDR1ycjgsmU0nbrFoRKUZKtWKzWqfkm0mAgAh+QQFCAANACwCAAAADgAQAAAEQbBJmdK8t1YsGWuaZRiT54HiSDbmN6kr614jZzcIck95vuO9H1CyWHAUikmxeEEiicvG4dBwJqHSKfXJ0VJ/U1sEACH5BAUIAA0ALAAAAAAQABAAAARBsMnZGKOYWpvzvknSTVwYjpQpotM5LQtrGA0Mj/Nsx11O36gZ5XDIIBAYIpFyPA6VDYWi0UQ+o9Kpc5SdsiTSTgQAIfkEBQgADQAsAAACABAADgAABEGwybWkbYzdRunN2dVVFqiJ5HdKx7FtSdK07SvFMe3auFzbN5lFoXgZDBsi8XI8XpRFBKLRRD6j0qkTmJ0CL1JbBAA7",
-                default_stylesheet: '.edys-sw-search-popup{ background: #eeeeee; -moz-border-radius: 5px; -webkit-border-radius: 5px; width: 340px; position: absolute; z-index: 1000; } .edys-sw-search-container-close{ display: block; text-align: right; overflow: hidden; clear: both; margin:3px 10px; } .edys-sw-search-masking-iframe{ width: 340px; position: absolute; border: none; z-index: 900; } .edys-sw-search-container-noresults { padding: 10px; margin: 10px; background: #ffffff; color: black; } .edys-sw-search-popup .gsc-result-siteSearch { padding: 10px; margin: 10px 10px 0 10px; background: #ffffff; text-align: left; font: 12px/13px Helvetica, Arial, sans-serif; } .edys-sw-search-popup .gsc-cursor-box { padding: 10px 0 10px 10px; margin: 10px 10px 10px 10px; background: #ffffff; } .edys-sw-search-popup .gsc-cursor-page { display: inline; cursor: pointer; color: #b9000f; padding: 3px 5px; } .edys-sw-search-popup .gsc-cursor-page:hover { background: #b9000f; color: white; } .edys-sw-search-popup .gsc-cursor-current-page { font-weight: bold; } .edys-sw-search-popup .gsc-resultsHeader, .edys-sw-search-popup .gsc-twiddle, .edys-sw-search-popup .gs-watermark, .edys-sw-search-popup .gs-visibleUrl, .edys-sw-search-popup .gsc-trailing-more-results { display: none; } .edys-sw-search-fin { border-width: 12px; width:0; height:0; border-style: solid; position: absolute; } .edys-sw-search-fin-left { border-color: transparent transparent transparent #eeeeee ; } .edys-sw-search-fin-right { border-color: transparent #eeeeee transparent transparent; } .edys-sw-search-fin-top { border-color: #eeeeee transparent transparent transparent; } .edys-sw-search-fin-bottom { border-color: transparent transparent #eeeeee transparent; } .edys-sw-search-popup .gsc-control { margin-top: -28px; padding-top: 28px; }',
+                default_stylesheet: '.edys-sw-search-popup { background: #ededec; background: rgba(231,231,231,0.95); -moz-border-radius: 5px; -webkit-border-radius: 5px; width: 330px; position: absolute; z-index: 10000; box-shadow: 0px 2px 25px rgba(0,0,0,0.75); color: #484d4f; font-size: 12px; font: 12px/14px "Helvetica Neue", Helvetica, Arial, sans-serif; padding: 10px 0px 10px 0px; text-shadow: 0 1px 0 #ffffff; } .edys-sw-search-popup table { border-collapse: collapse; } .edys-sw-search-popup .gs-title { color: #1b2124; font-weight: bold; text-decoration: none; padding: 0 0 10px 0; } .edys-sw-search-container-close { display: block; float: right; overflow: hidden; width: 10px; height: 11px; clear: both; margin-right: 10px; background: url("http://static.kraftal.com/assets/site_search/3.0/site-search-closebtn.png") no-repeat right 0; } .edys-sw-search-masking-iframe { width: 340px; position: absolute; border: none; z-index: 9000; } .edys-sw-search-container-noresults { padding: 20px 20px 30px 20px; } .edys-sw-search-popup .gsc-result-siteSearch { margin: 0px 10px 10px 10px; overflow: hidden; } .edys-sw-search-popup .gsc-results { padding-top: 30px; margin-top: -20px; } .edys-sw-search-popup .gsc-cursor-box { border-top: 1px solid #b9b9b9; padding-top: 10px; font-size: 14px; color: #0066bb; text-align: right; padding-right: 10px; } .edys-sw-search-popup .gsc-cursor-page { display: inline; cursor: pointer; padding: 3px 5px; } .edys-sw-search-popup .gsc-cursor-page:hover, .edys-sw-search-popup .gsc-cursor-current-page { color: #484d4f; } .edys-sw-search-popup .gsc-cursor-current-page { font-weight: bold; } .edys-sw-search-popup .gsc-resultsHeader, .edys-sw-search-popup .gsc-twiddle, .edys-sw-search-popup .gs-watermark, .edys-sw-search-popup .gs-visibleUrl, .edys-sw-search-popup .gsc-trailing-more-results { display: none; } .edys-sw-search-fin { /*border-width: 23px;*/ width:106px; height:106px; position: absolute; background: url("http://static.kraftal.com/assets/site_search/3.0/site-search-fin.png") no-repeat; margin-left: -53px; margin-top: -53px; } .edys-sw-search-fin-left { width: 40px; margin-right: -40px; background-position: -66px 0px; } .edys-sw-search-fin-right { width: 40px; margin-left: -40px; } .edys-sw-search-fin-top { height: 40px; margin-bottom: -40px; background-position: 0px -66px; } .edys-sw-search-fin-bottom { height: 40px; margin-top: -40px; }',
                 default_stylesheet_enabled: true,
                 popup_position: "auto",
                 popup_min_margin: 10,
                 fin_style: {},
                 display_fin: true, /* disable to support ie6 */
+				fin_shift_percent: 0.2,
                 without_popup: false,
                 without_popup_element_id: "",
                 without_popup_noresults_id: "",
                 texts: {
-                    close: "Close",
+                    close: "",
                     noresults: "Your search did not match any documents"
                 },
                 link_target: "_self",
@@ -388,8 +389,8 @@
                 if ( this.settings.display_fin ){
                     var thefin = $("." + this.settings.system_classes.fin),
                         fin = {
-                            width: thefin.outerWidth() / 2,
-                            height: thefin.outerHeight() / 2
+                            width: thefin.outerWidth(),
+                            height: thefin.outerHeight()
                         };
                 } else {
                     var fin = false;
@@ -425,8 +426,8 @@
             position_popup_left: function(pop,input,viewport,input_pos,fin) {
                 var newPos = {
                     top: (((input_pos.bottom - input_pos.top) / 2) +input_pos.top) - (pop.outerHeight() / 2),
-                    left: (fin !== false) ? input_pos.left - pop.outerWidth() - fin.width : input_pos.left - pop.outerWidth(),
-                    right: (fin !== false) ? input_pos.left - fin.width : input_pos.left,
+                    left: (fin !== false) ? input_pos.left - pop.outerWidth() - (fin.width * this.settings.fin_shift_percent) : input_pos.left - pop.outerWidth(),
+                    right: (fin !== false) ? input_pos.left - (fin.width * this.settings.fin_shift_percent) : input_pos.left,
                     bottom: (((input_pos.bottom - input_pos.top) / 2) + input_pos.top) + (pop.outerHeight() / 2)
                 }
                 this.fix_bounds_and_position(pop, newPos, viewport, input_pos, "left", fin);
@@ -435,8 +436,8 @@
             position_popup_right: function(pop,input,viewport,input_pos,fin) {
                 var newPos = {
                     top: (((input_pos.bottom - input_pos.top) / 2) +input_pos.top) - (pop.outerHeight() / 2),
-                    left: (fin !== false) ? input_pos.right + fin.width : input_pos.right,
-                    right: (fin !== false) ? input_pos.left + pop.outerWidth() + fin.width : input_pos.left + pop.outerWidth(),
+                    left: (fin !== false) ? input_pos.right + (fin.width * this.settings.fin_shift_percent) : input_pos.right,
+                    right: (fin !== false) ? input_pos.left + pop.outerWidth() + (fin.width * this.settings.fin_shift_percent) : input_pos.left + pop.outerWidth(),
                     bottom: (((input_pos.bottom - input_pos.top) / 2) + input_pos.top) + (pop.outerHeight() / 2)
                 }
                 this.fix_bounds_and_position(pop, newPos, viewport, input_pos, "right", fin);
@@ -444,20 +445,20 @@
 
             position_popup_top: function(pop,input,viewport,input_pos,fin) {
                 var newPos = {
-                    top: (fin !== false) ? input_pos.top - pop.outerHeight() - fin.width : input_pos.top - pop.outerHeight(),
+                    top: (fin !== false) ? input_pos.top - pop.outerHeight() - (fin.width * this.settings.fin_shift_percent) : input_pos.top - pop.outerHeight(),
                     left: input_pos.left - ((pop.outerWidth() - input_pos.width) / 2),
                     right: input_pos.right + ((pop.outerWidth() - input_pos.width) / 2),
-                    bottom: (fin !== false) ? input_pos.top - fin.width : input_pos.top
+                    bottom: (fin !== false) ? input_pos.top - (fin.width * this.settings.fin_shift_percent) : input_pos.top
                 }
                 this.fix_bounds_and_position(pop, newPos, viewport, input_pos, "top", fin);
             },
 
             position_popup_bottom: function(pop,input,viewport,input_pos,fin) {
                 var newPos = {
-                    top: (fin !== false) ? input_pos.bottom + fin.width : input_pos.bottom,
+                    top: (fin !== false) ? input_pos.bottom + (fin.width * this.settings.fin_shift_percent) : input_pos.bottom,
                     left: input_pos.left - ((pop.outerWidth() - input_pos.width) / 2),
                     right: input_pos.right + ((pop.outerWidth() - input_pos.width) / 2),
-                    bottom: (fin !== false) ? input_pos.bottom + pop.outerHeight() + fin.width : input_pos.bottom + pop.outerHeight()
+                    bottom: (fin !== false) ? input_pos.bottom + pop.outerHeight() + (fin.width * this.settings.fin_shift_percent) : input_pos.bottom + pop.outerHeight()
                 }
                 this.fix_bounds_and_position(pop, newPos, viewport, input_pos, "bottom", fin);
             },
@@ -489,38 +490,50 @@
                     switch(fin_mode) {
                         case "bottom":
                             thefin.addClass(this.settings.system_classes.fin_bottom).addClass(this.settings.fin_bottom_class);
-                            fin_left_pos = ((input_pos.right - input_pos.left) / 2) + (input_pos.left - newPos.left) - (thefin.outerWidth() / 2);
+                            var fin_left_pos = ((input_pos.right - input_pos.left) / 2) + (input_pos.left - newPos.left);
                             thefin.css({
                                 left: fin_left_pos + "px",
-                                top: -thefin.outerWidth() + "px",
+                                top: "0px",
                                 bottom: "auto"
                             });
                         break;
                         case "top":
                             thefin.addClass(this.settings.system_classes.fin_top).addClass(this.settings.fin_top_class);
-                            fin_left_pos = ((input_pos.right-input_pos.left) / 2) + (input_pos.left - newPos.left) - (thefin.outerWidth() / 2);
+                            var fin_left_pos = ((input_pos.right-input_pos.left) / 2) + (input_pos.left - newPos.left);
                             thefin.css({
                                 left: fin_left_pos + "px",
                                 top: "auto",
-                                bottom: -thefin.outerWidth() + "px"
+                                bottom: "0px"
                             });
                         break;
                         case "left":
                             thefin.addClass(this.settings.system_classes.fin_left).addClass(this.settings.fin_left_class);
-                            fin_top_pos = ((input_pos.bottom - input_pos.top) / 2) + (input_pos.top - newPos.top) - (thefin.outerHeight() / 2);
+                            var fin_top_pos = ((input_pos.bottom - input_pos.top) / 2) + (input_pos.top - newPos.top);
+							if ( fin_top_pos < 0 + (thefin.outerHeight() / 3) ) {
+								fin_top_pos = 0 + (thefin.outerHeight() / 3);
+							}
+							if ( fin_top_pos > ( newPos.bottom - newPos.top ) - (thefin.outerHeight() * 0.33) ) {
+								fin_top_pos = ( newPos.bottom - newPos.top ) - (thefin.outerHeight() * 0.33);
+							}
                             thefin.css({
                                 top: fin_top_pos + "px",
                                 left: "auto",
-                                right: -thefin.outerHeight() + "px"
+                                right: "0px"
                             });
                         break;
                         case "right":
                             thefin.addClass(this.settings.system_classes.fin_right).addClass(this.settings.fin_right_class);
-                            fin_top_pos = ((input_pos.bottom-input_pos.top) / 2) + (input_pos.top-newPos.top) - (thefin.outerHeight() / 2);
+                            var fin_top_pos = ((input_pos.bottom-input_pos.top) / 2) + (input_pos.top-newPos.top);
+							if ( fin_top_pos < 0 + (thefin.outerHeight() / 3) ) {
+								fin_top_pos = 0 + (thefin.outerHeight() / 3);
+							}
+							if ( fin_top_pos > ( newPos.bottom - newPos.top ) - (thefin.outerHeight() * 0.33) ) {
+								fin_top_pos = ( newPos.bottom - newPos.top ) - (thefin.outerHeight() * 0.33);
+							}
                             thefin.css({
                                 top: fin_top_pos + "px",
                                 right: "auto",
-                                left: -thefin.outerHeight() + "px"
+                                left: "0px"
                             });
                         break;
                     }

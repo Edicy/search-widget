@@ -4,8 +4,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   </head>
   <body>
-    Searchbox 1:
-    <form class="edys-search" ><input type="text" class="edys-search-input" /></form>
+    Searchbox 1:<br/><br/>
+    <form class="edys-search" >lkjasdlkfjasldkfjaslfjalskdjflaksjflkasjflkasjflkasjflasjflasjflasjflajsdflkasdlkfjasdlfasldfskl<input type="text" class="edys-search-input" /></form>
     <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
     <br/>Searchbox 2 :<br/>
     <form class="edys-search" id="sb2" style="margin-left: 100px;"><input type="text" class="edys-search-input" /></form>
@@ -13,30 +13,6 @@
     This is alternative Div where to send searchbox:
     <div id="my-div" style="border: 10px solid #dddddd;"></div>
     <div id="my-div-noresults" style="display:none;">Pole tulemusi</div>
-
-    <script>
-      edys_site_search_options = {
-        /* executed after jquery/google/jquery.site_search loaded */
-        init_complete: function($){
-          // event after search by google has executed and poopup shown
-          $('#sb2').bind('afterSearch', function(){ alert('foo after'); });
-
-          // event before search executed and after form submit
-          $('#sb2').bind('beforeSearch', function(){ alert('foo before'); });
-
-          // getting js object
-          var o = $('#sb2').site_search('get_object');
-        },
-
-        texts: {
-          close: "Sulge"
-        }
-      }
-
-      /* if jquery loaded you can access module loaded event like this */
-      //$('body').bind('Edys_search_init_complete', function (){ alert('foo'); });
-    </script>
-
     <script type="text/javascript" src="site-search.js"></script>
   </body>
 </html>
