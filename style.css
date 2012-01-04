@@ -81,24 +81,41 @@
 	margin-top:-20px;
 	margin-left:-20px;
 	border-style: solid; 
+	border-color: #e1e1e1;
 } 
 .edys-sw-search-fin-left { 
 	margin-right:-40px;
-	border-color: transparent transparent transparent #e1e1e1;
-	border-color: rgba(0,0,0,0) rgba(0,0,0,0) rgba(0,0,0,0) #e1e1e1;
+	border-top-color: transparent;
+	border-right-color: transparent;
+	border-bottom-color: transparent;
+	border-top-color: rgba(0,0,0,0);
+	border-right-color: rgba(0,0,0,0);
+	border-bottom-color: rgba(0,0,0,0);
 } 
 .edys-sw-search-fin-right { 
 	margin-left: -40px;
-	border-color: transparent #e1e1e1 transparent transparent;
-	border-color: rgba(0,0,0,0) #e1e1e1 rgba(0,0,0,0) rgba(0,0,0,0);
+	border-top-color: transparent;
+	border-left-color: transparent;
+	border-bottom-color: transparent;
+	border-top-color: rgba(0,0,0,0);
+	border-left-color: rgba(0,0,0,0);
+	border-bottom-color: rgba(0,0,0,0);
 } 
 .edys-sw-search-fin-top { 
 	margin-bottom:-40px;
-	border-color: #e1e1e1 transparent transparent transparent;
-	border-color: #e1e1e1 rgba(0,0,0,0) rgba(0,0,0,0) rgba(0,0,0,0);
+	border-left-color: transparent;
+	border-right-color: transparent;
+	border-bottom-color: transparent;
+	border-left-color: rgba(0,0,0,0);
+	border-right-color: rgba(0,0,0,0);
+	border-bottom-color: rgba(0,0,0,0);
 } 
 .edys-sw-search-fin-bottom { 
 	margin-top: -40px;
-	border-color: transparent transparent #e1e1e1 transparent;
-	border-color: rgba(0,0,0,0) rgba(0,0,0,0) #e1e1e1 rgba(0,0,0,0);
+	border-top-color: transparent;
+	border-right-color: transparent;
+	border-left-color: transparent;
+	border-top-color: rgba(0,0,0,0);
+	border-right-color: rgba(0,0,0,0);
+	border-left-color: rgba(0,0,0,0);
 }

@@ -6,18 +6,32 @@
   </head>
   <body>
     Searchbox 1:<br/><br/>
-    <form class="edys-search" >lkjasdlkfjasldkfjaslfjalskdjflaksjflkasjflkasjflkasjflasjflasjflasjflajsdflkasdlkfjasdlfasldfskl<input type="text" class="edys-search-input" placeholder="Search..."  /></form>
+
+    <form class="edys-search" id="search1" >
+		<input type="text" class="edys-search-input" placeholder="Search..."  />
+		<span class="loading-icon1" style="display:none; position: absolute;margin-left: -32px;font-size: 10px; margin-top: 6px;">Wait...</span>
+	</form>
+		
     <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
     <br/>Searchbox 2 :<br/>
     <form class="edys-search" id="sb2" style="margin-left: 100px;"><input type="text" class="edys-search-input" placeholder="Search..." /></form>
-    <br/>
+    
+	<br/>
     This is alternative Div where to send searchbox:
     <div id="my-div" style="border: 10px solid #dddddd;"></div>
     <div id="my-div-noresults" style="display:none;">Pole tulemusi</div>
 
 	<script type="text/javascript">
 	       var edys_site_search_options = {
-				/*default_stylesheet_enabled: false*/
+				init_complete: function($){
+					$('#search1').bind('beforeSearch', function() {
+						$(this).find('.loading-icon1').show();
+					});
+					$('#search1').bind('afterSearch', function() {
+						$(this).find('.loading-icon1').hide();
+					});
+				}
 		   }
 	</script>
 

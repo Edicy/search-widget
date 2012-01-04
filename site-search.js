@@ -123,7 +123,6 @@
                 close_btn_class: "edys-search-container-close",
                 noresults_class: "edys-search-container-noresults",
                 popup_class: "edys-search-popup",
-                loading_img_class: "edys-search-loading",
                 masking_iframe_class: "edys-search-masking-iframe",
                 fin_class: "edys-search-fin",
                 fin_left_class: "edys-search-fin-left",
@@ -135,7 +134,6 @@
                     close_btn:"edys-sw-search-container-close",
                     noresults: "edys-sw-search-container-noresults",
                     popup: "edys-sw-search-popup",
-                    loading_img: "edys-sw-search-loading",
                     masking_iframe: "edys-sw-search-masking-iframe",
                     fin: "edys-sw-search-fin",
                     fin_left: "edys-sw-search-fin-left",
@@ -147,8 +145,7 @@
 
                 default_popup_style: {position: "absolute",display: "none"},
                 default_closebtn_style: {cursor: "pointer"},
-                loading_image: "R0lGODlhEAAQALMNAKqon4SCecTBuXd1bZGOhpCPhoSCesPCuXd1bJCOhtDOxre1rJ2bkv///wAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQFCAANACwAAAAAEAAQAAAEUrDJ2daimFqb5xHV1gAAdnwgR5LUKYDTWrYwxU6K0k0M0+S5Xa8H1HWGvuCu0aMMEJlEAjN4QicF6XRSRUADgUZWikEMGgYDuEEgLNPr5UTdiQAAIfkEBQgADQAsAAAAABAAEAAABEiwydnOoZham6dS1dYsC/Z94UiW3kmtbJuRFIJ0EwA0to3rut6tA9z5cA0dxWDIMBgYJpPyfC6ljUSiUYVes9qtFRfeIifaTgQAIfkEBQgADQAsAAAAABAAEAAABEiwydmUophamydC1dYcB/Z94UiW3kmtbJuRlGF007I0to3rut6tA9z5cA0dJZHIAAAYJpPyfC6lDQajUYVes9qtFRfeIifaTgQAIfkEBQgADQAsAAAAABAADgAABD6wydkQopham6cx1dYoCvZ94UiW3kmtbJuRVJJ003E0to3rut6tA9z5cA0dhcHILBYYJpPyfC6l1Gq0ibFKIgAh+QQFCAANACwAAAAAEAAQAAAEQrDJ2YyhmFqbZ0rV1iAI9n3hSJbeSa1sm5EUw3STojS2jeu63q0D3PlwDR1ycjgsmU0nbrFoRKUZKtWKzWqfkm0mAgAh+QQFCAANACwCAAAADgAQAAAEQbBJmdK8t1YsGWuaZRiT54HiSDbmN6kr614jZzcIck95vuO9H1CyWHAUikmxeEEiicvG4dBwJqHSKfXJ0VJ/U1sEACH5BAUIAA0ALAAAAAAQABAAAARBsMnZGKOYWpvzvknSTVwYjpQpotM5LQtrGA0Mj/Nsx11O36gZ5XDIIBAYIpFyPA6VDYWi0UQ+o9Kpc5SdsiTSTgQAIfkEBQgADQAsAAACABAADgAABEGwybWkbYzdRunN2dVVFqiJ5HdKx7FtSdK07SvFMe3auFzbN5lFoXgZDBsi8XI8XpRFBKLRRD6j0qkTmJ0CL1JbBAA7",
-                default_stylesheet: '.edys-sw-search-popup { background: #e1e1e1; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; width: 330px; position: absolute; z-index: 10000; -moz-box-shadow: 0px 2px 15px rgba(0,0,0,0.15); -webkit-box-shadow: 0px 2px 15px rgba(0,0,0,0.15); box-shadow: 0px 2px 15px rgba(0,0,0,0.15); color: #484d4f; font-size: 12px; font: 12px/14px "Helvetica Neue", Helvetica, Arial, sans-serif; padding: 10px 0px 10px 0px; -moz-text-shadow: 0 1px 0 #ffffff; -webkit-text-shadow: 0 1px 0 #ffffff; text-shadow: 0 1px 0 #ffffff; text-align: left; -moz-opacity: 0.95; -webkit-opacity: 0.95; opacity: 0.95; } .edys-sw-search-popup table { border-collapse: collapse; } .edys-sw-search-popup .gs-title { color: #1b2124; font-weight: bold; text-decoration: none; padding: 0 0 10px 0; } .edys-sw-search-container-close { display: block; float: right; overflow: hidden; width: 10px; height: 11px; clear: both; margin-right: 10px; background: url("http://static.kraftal.com/assets/site_search/3.0/site-search-closebtn.png") no-repeat right 0; } .edys-sw-search-masking-iframe { width: 340px; position: absolute; border: none; z-index: 9000; } .edys-sw-search-container-noresults { padding: 20px; } .edys-sw-search-popup .gsc-result-siteSearch { margin: 0px 10px 10px 10px; overflow: hidden; } .edys-sw-search-popup .gsc-results { padding-top: 30px; margin-top: -20px; } .edys-sw-search-popup .gsc-cursor-box { border-top: 1px solid #b9b9b9; padding-top: 10px; font-size: 14px; color: #0066bb; text-align: right; padding-right: 10px; } .edys-sw-search-popup .gsc-cursor-page { display: inline; cursor: pointer; padding: 3px 5px; } .edys-sw-search-popup .gsc-cursor-page:hover, .edys-sw-search-popup .gsc-cursor-current-page { color: #484d4f; } .edys-sw-search-popup .gsc-cursor-current-page { font-weight: bold; } .edys-sw-search-popup .gsc-resultsHeader, .edys-sw-search-popup .gsc-twiddle, .edys-sw-search-popup .gs-watermark, .edys-sw-search-popup .gs-visibleUrl, .edys-sw-search-popup .gsc-trailing-more-results { display: none; } .edys-sw-search-fin { width:0px; height:0px; position: absolute; border-width: 20px; margin-top:-20px; margin-left:-20px; border-style: solid; } .edys-sw-search-fin-left { margin-right:-40px; border-color: transparent transparent transparent #e1e1e1; border-color: rgba(0,0,0,0) rgba(0,0,0,0) rgba(0,0,0,0) #e1e1e1; } .edys-sw-search-fin-right { margin-left: -40px; border-color: transparent #e1e1e1 transparent transparent; border-color: rgba(0,0,0,0) #e1e1e1 rgba(0,0,0,0) rgba(0,0,0,0); } .edys-sw-search-fin-top { margin-bottom:-40px; border-color: #e1e1e1 transparent transparent transparent; border-color: #e1e1e1 rgba(0,0,0,0) rgba(0,0,0,0) rgba(0,0,0,0); } .edys-sw-search-fin-bottom { margin-top: -40px; border-color: transparent transparent #e1e1e1 transparent; border-color: rgba(0,0,0,0) rgba(0,0,0,0) #e1e1e1 rgba(0,0,0,0); }',
+                default_stylesheet: '.edys-sw-search-popup { background: #e1e1e1; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; width: 330px; position: absolute; z-index: 10000; -moz-box-shadow: 0px 2px 15px rgba(0,0,0,0.15); -webkit-box-shadow: 0px 2px 15px rgba(0,0,0,0.15); box-shadow: 0px 2px 15px rgba(0,0,0,0.15); color: #484d4f; font-size: 12px; font: 12px/14px "Helvetica Neue", Helvetica, Arial, sans-serif; padding: 10px 0px 10px 0px; -moz-text-shadow: 0 1px 0 #ffffff; -webkit-text-shadow: 0 1px 0 #ffffff; text-shadow: 0 1px 0 #ffffff; text-align: left; -moz-opacity: 0.95; -webkit-opacity: 0.95; opacity: 0.95; } .edys-sw-search-popup table { border-collapse: collapse; } .edys-sw-search-popup .gs-title { color: #1b2124; font-weight: bold; text-decoration: none; padding: 0 0 10px 0; } .edys-sw-search-container-close { display: block; float: right; overflow: hidden; width: 10px; height: 11px; clear: both; margin-right: 10px; background: url("http://static.kraftal.com/assets/site_search/3.0/site-search-closebtn.png") no-repeat right 0; } .edys-sw-search-masking-iframe { width: 340px; position: absolute; border: none; z-index: 9000; } .edys-sw-search-container-noresults { padding: 20px; } .edys-sw-search-popup .gsc-result-siteSearch { margin: 0px 10px 10px 10px; overflow: hidden; } .edys-sw-search-popup .gsc-results { padding-top: 30px; margin-top: -20px; } .edys-sw-search-popup .gsc-cursor-box { border-top: 1px solid #b9b9b9; padding-top: 10px; font-size: 14px; color: #0066bb; text-align: right; padding-right: 10px; } .edys-sw-search-popup .gsc-cursor-page { display: inline; cursor: pointer; padding: 3px 5px; } .edys-sw-search-popup .gsc-cursor-page:hover, .edys-sw-search-popup .gsc-cursor-current-page { color: #484d4f; } .edys-sw-search-popup .gsc-cursor-current-page { font-weight: bold; } .edys-sw-search-popup .gsc-resultsHeader, .edys-sw-search-popup .gsc-twiddle, .edys-sw-search-popup .gs-watermark, .edys-sw-search-popup .gs-visibleUrl, .edys-sw-search-popup .gsc-trailing-more-results { display: none; } .edys-sw-search-fin { width:0px; height:0px; position: absolute; border-width: 20px; margin-top:-20px; margin-left:-20px; border-style: solid; border-color: #e1e1e1; } .edys-sw-search-fin-left { margin-right:-40px; border-top-color: transparent; border-right-color: transparent; border-bottom-color: transparent; border-top-color: rgba(0,0,0,0); border-right-color: rgba(0,0,0,0); border-bottom-color: rgba(0,0,0,0); } .edys-sw-search-fin-right { margin-left: -40px; border-top-color: transparent; border-left-color: transparent; border-bottom-color: transparent; border-top-color: rgba(0,0,0,0); border-left-color: rgba(0,0,0,0); border-bottom-color: rgba(0,0,0,0); } .edys-sw-search-fin-top { margin-bottom:-40px; border-left-color: transparent; border-right-color: transparent; border-bottom-color: transparent; border-left-color: rgba(0,0,0,0); border-right-color: rgba(0,0,0,0); border-bottom-color: rgba(0,0,0,0); } .edys-sw-search-fin-bottom { margin-top: -40px; border-top-color: transparent; border-right-color: transparent; border-left-color: transparent; border-top-color: rgba(0,0,0,0); border-right-color: rgba(0,0,0,0); border-left-color: rgba(0,0,0,0); }',
                 default_stylesheet_enabled: true,
                 popup_position: "auto",
                 popup_min_margin: 10,
@@ -164,7 +161,7 @@
                 },
                 link_target: "_self",
                 sideclick_enabled: true,
-                host_name: document.location.hostname.replace(/^www./, '')
+                host_name: document.location.hostname.replace(/^www./, ''),
             };
 
             /* varaibles to remember */
@@ -283,28 +280,10 @@
                 this.form_element.trigger('beforeSearch');
                 var input_el = this.form_element.find( this.settings.search_input ),
                     pos = input_el.offset(),
-                    loader = $("<img />").attr({ "src":"data:image/png;base64," + this.settings.loading_image })
-                                         .addClass( this.settings.system_classes.loading_img )
-                                         .addClass( this.settings.loading_img_class )
-                                         .css({ position:"absolute", visibility:"hidden" }),
                     searchstring = input_el.val();
 
                 pos.height = input_el.outerHeight();
                 pos.width= input_el.outerWidth();
-
-                /* draw loading img */
-                /* make ie7 and less ignore it as they cannot display base64 images */
-                if (!this.is_ie_lte_7) {
-                    $("." + this.settings.system_classes.loading_img ).remove();
-                    loader.load(function() {
-                        $(this).css({
-                            top: pos.top + ((pos.height - $(this).height()) / 2) + "px",
-                            left: (pos.left + (pos.width - $(this).width() - ($(this).width() / 4))) + "px",
-                            visibility:"visible"
-                        });
-                    });
-                    $("body").prepend(loader);
-                }
                 this.search_control.setSearchCompleteCallback( this, $.proxy( function() { this.search_complete(input_el); } , this) );
                 this.search_control.execute(searchstring);
                 return false;
@@ -364,9 +343,6 @@
                         }
                     }
                     pop.css({visibility: "visible"});
-                }
-                if(!this.is_ie_lte_7){
-                    $("." + this.settings.system_classes.loading_img).remove();
                 }
 
                 this.form_element.trigger('afterSearch');
