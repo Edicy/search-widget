@@ -389,8 +389,8 @@
                 if ( this.settings.display_fin ){
                     var thefin = $("." + this.settings.system_classes.fin),
                         fin = {
-                            width: thefin.outerWidth(),
-                            height: thefin.outerHeight()
+                            width: thefin.outerWidth() + parseInt(thefin.css("borderLeftWidth"),10) + parseInt(thefin.css("borderRightWidth"),10),
+                            height: thefin.outerHeight() + parseInt(thefin.css("borderTopWidth"),10) + parseInt(thefin.css("borderBottomWidth"),10)
                         };
                 } else {
                     var fin = false;
@@ -434,6 +434,7 @@
             },
 
             position_popup_right: function(pop,input,viewport,input_pos,fin) {
+				console.log(fin.width);
                 var newPos = {
                     top: (((input_pos.bottom - input_pos.top) / 2) +input_pos.top) - (pop.outerHeight() / 2),
                     left: (fin !== false) ? input_pos.right + (fin.width * this.settings.fin_shift_percent) : input_pos.right,

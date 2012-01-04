@@ -38,7 +38,7 @@ To configure a javascript object "edys_site_search_options" for configuration ca
 Main configuration variables:
     host_name => host name of the site to search. by default the host name derived from the url address is taken
 
-    autorun_init => default = true. if set tu false bloks all automatic loading of module. if site_search jquery module is needed only it can be called out in javascript "apply_site_search_module(jQuery);" (jQuery and google search mus be breloaded then).
+    autorun_init => default = true. if set tu false bloks all automatic loading of module. if site_search jquery module is needed only it can be called out in javascript "apply_site_search_module(jQuery);" (jQuery and google search mus be preloaded then).
     autorun_search => default = true. jQuery / google search / jquery.site_search modules will be loaded, but site search will not be automatically bound to forms.
     init_complete  => default = null; function can be bound to init complete and will be fired after module has been loaded. ex:  edys_site_search_options = { init_complete: function($){ alert("foo"); } }
 
