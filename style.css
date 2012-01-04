@@ -5,18 +5,21 @@
 	border-radius: 5px;
 	width: 330px; 
 	position: absolute; 
-	z-index: 10000; 
+	z-index: 10000;
+	-moz-box-shadow: 0px 2px 15px rgba(0,0,0,0.15);
+	-webkit-box-shadow: 0px 2px 15px rgba(0,0,0,0.15);
 	box-shadow: 0px 2px 15px rgba(0,0,0,0.15);
-	
 	color: #484d4f;
 	font-size: 12px;
 	font: 12px/14px "Helvetica Neue", Helvetica, Arial, sans-serif; 
 	padding: 10px 0px 10px 0px;
+	-moz-text-shadow: 0 1px 0 #ffffff;
+	-webkit-text-shadow: 0 1px 0 #ffffff;
 	text-shadow: 0 1px 0 #ffffff;
-		
 	text-align: left;
+	-moz-opacity: 0.95;
+	-webkit-opacity: 0.95;
 	opacity: 0.95;
-	
 } 
 .edys-sw-search-popup table { border-collapse: collapse; }
 .edys-sw-search-popup .gs-title {
@@ -71,7 +74,6 @@
 .edys-sw-search-popup .gsc-cursor-current-page { font-weight: bold; } 
 .edys-sw-search-popup .gsc-resultsHeader, .edys-sw-search-popup .gsc-twiddle, .edys-sw-search-popup .gs-watermark, .edys-sw-search-popup .gs-visibleUrl, .edys-sw-search-popup .gsc-trailing-more-results { display: none; } 
 .edys-sw-search-fin { 
-	/*border-width: 23px;*/ 
 	width:0px; 
 	height:0px; 
 	position: absolute;
@@ -79,23 +81,24 @@
 	margin-top:-20px;
 	margin-left:-20px;
 	border-style: solid; 
-	/* background: url('http://static.kraftal.com/assets/site_search/3.0/site-search-fin.png') no-repeat; 
-	margin-left: -53px;
-	margin-top: -53px;*/
 } 
 .edys-sw-search-fin-left { 
 	margin-right:-40px;
 	border-color: transparent transparent transparent #e1e1e1;
+	border-color: rgba(0,0,0,0) rgba(0,0,0,0) rgba(0,0,0,0) #e1e1e1;
 } 
 .edys-sw-search-fin-right { 
 	margin-left: -40px;
 	border-color: transparent #e1e1e1 transparent transparent;
+	border-color: rgba(0,0,0,0) #e1e1e1 rgba(0,0,0,0) rgba(0,0,0,0);
 } 
 .edys-sw-search-fin-top { 
 	margin-bottom:-40px;
 	border-color: #e1e1e1 transparent transparent transparent;
+	border-color: #e1e1e1 rgba(0,0,0,0) rgba(0,0,0,0) rgba(0,0,0,0);
 } 
 .edys-sw-search-fin-bottom { 
 	margin-top: -40px;
 	border-color: transparent transparent #e1e1e1 transparent;
+	border-color: rgba(0,0,0,0) rgba(0,0,0,0) #e1e1e1 rgba(0,0,0,0);
 }
