@@ -33,7 +33,7 @@
                 if (typeof window.edys_site_search_options.loaded == "undefined") {
                     window.edys_site_search_options.loaded = true;
                     this.get_missing_scripts( function() {
-                        $.extend(this.settings, window.edys_site_search_options);
+                        $.extend(true, this.settings, window.edys_site_search_options);
                         apply_site_search_module($);
                         if ( this.settings.autorun_search ) {
                             $(document).ready( $.proxy(function() {
@@ -186,7 +186,7 @@
 
         searcher.prototype = {
             init: function( options ){
-                if ( options ) { $.extend( this.settings, options ); }
+                if ( options ) { $.extend( true, this.settings, options ); }
                 if ( this.settings.default_stylesheet_enabled ) { this.add_stylesheet(this.settings.default_stylesheet); }
 
                 var input_el = this.form_element.find(this.settings.search_input);
@@ -251,7 +251,7 @@
 
             init_without_popup: function(){
                 this.configure_google_search({
-                   popup_element: $("#"+this.settings.without_popup_element_id).get(0),
+                   popup_element: $("#"+this.settings.without_popup_element_id),
                    hostname: this.settings.host_name,
                    link_target: this.settings.link_target,
                    complete_function: this.search_complete
@@ -339,7 +339,7 @@
 
             search_complete: function(input){
                 var pop = this.search_popup,
-                    nr_of_results = pop.find(".gsc-stats").html(),
+                    nr_of_results = (!this.settings.without_popup) ? pop.find(".gsc-stats").html() : $("#" + this.settings.without_popup_element_id).find(".gsc-stats").html(),
                     noresults_el = (!this.settings.without_popup) ? pop.find(' .'+this.settings.system_classes.noresults) : $("#" + this.settings.without_popup_noresults_id);
 
                 if (nr_of_results == "(0)") {
@@ -596,5 +596,7 @@
         };
 
     };
+
+	window.apply_site_search_module = apply_site_search_module;
 
 })();
