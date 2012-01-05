@@ -31,7 +31,7 @@
 	       var edys_site_search_options = {
 				init_complete: function($){
 					$('#search1').bind('beforeSearch', function() {
-						$(this).find('.loading-icon1').show();
+						$(this).find('.loading-icon1').css('display','inline');
 					});
 					$('#search1').bind('afterSearch', function() {
 						$(this).find('.loading-icon1').hide();

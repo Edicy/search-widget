@@ -46,6 +46,7 @@
 } 
 .edys-sw-search-container-noresults { 
 	padding: 20px; 
+	text-align: center;
 } 
 .edys-sw-search-popup .gsc-result-siteSearch {
 	margin: 0px 10px 10px 10px;
