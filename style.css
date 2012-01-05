@@ -36,7 +36,7 @@
 	height: 11px;
 	clear: both; 
 	margin-right: 10px;
-	background: url('http://static.kraftal.com/assets/site_search/3.0/site-search-closebtn.png') no-repeat right 0; 
+	background: url("http://static.kraftal.com/assets/site_search/3.0/site-search-closebtn.png") no-repeat right 0; 
 } 
 .edys-sw-search-masking-iframe { 
 	width: 340px; 
@@ -85,37 +85,37 @@
 } 
 .edys-sw-search-fin-left { 
 	margin-right:-40px;
-	border-top-color: transparent;
-	border-right-color: transparent;
-	border-bottom-color: transparent;
-	border-top-color: rgba(0,0,0,0);
-	border-right-color: rgba(0,0,0,0);
-	border-bottom-color: rgba(0,0,0,0);
+	border-top-color: transparent !important;
+	border-right-color: transparent !important;
+	border-bottom-color: transparent !important;
+	border-top-color: rgba(0,0,0,0) !important;
+	border-right-color: rgba(0,0,0,0) !important;
+	border-bottom-color: rgba(0,0,0,0) !important;
 } 
 .edys-sw-search-fin-right { 
 	margin-left: -40px;
-	border-top-color: transparent;
-	border-left-color: transparent;
-	border-bottom-color: transparent;
-	border-top-color: rgba(0,0,0,0);
-	border-left-color: rgba(0,0,0,0);
-	border-bottom-color: rgba(0,0,0,0);
+	border-top-color: transparent !important;
+	border-left-color: transparent !important;
+	border-bottom-color: transparent !important;
+	border-top-color: rgba(0,0,0,0) !important;
+	border-left-color: rgba(0,0,0,0) !important;
+	border-bottom-color: rgba(0,0,0,0) !important;
 } 
 .edys-sw-search-fin-top { 
 	margin-bottom:-40px;
-	border-left-color: transparent;
-	border-right-color: transparent;
-	border-bottom-color: transparent;
-	border-left-color: rgba(0,0,0,0);
-	border-right-color: rgba(0,0,0,0);
-	border-bottom-color: rgba(0,0,0,0);
+	border-left-color: transparent !important;
+	border-right-color: transparent !important;
+	border-bottom-color: transparent !important;
+	border-left-color: rgba(0,0,0,0) !important;
+	border-right-color: rgba(0,0,0,0) !important;
+	border-bottom-color: rgba(0,0,0,0) !important;
 } 
 .edys-sw-search-fin-bottom { 
 	margin-top: -40px;
-	border-top-color: transparent;
-	border-right-color: transparent;
-	border-left-color: transparent;
-	border-top-color: rgba(0,0,0,0);
-	border-right-color: rgba(0,0,0,0);
-	border-left-color: rgba(0,0,0,0);
+	border-top-color: transparent !important;
+	border-right-color: transparent !important;
+	border-left-color: transparent !important;
+	border-top-color: rgba(0,0,0,0) !important;
+	border-right-color: rgba(0,0,0,0) !important;
+	border-left-color: rgba(0,0,0,0) !important;
 }
