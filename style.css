@@ -89,34 +89,22 @@
 	border-top-color: transparent !important;
 	border-right-color: transparent !important;
 	border-bottom-color: transparent !important;
-	border-top-color: rgba(0,0,0,0) !important;
-	border-right-color: rgba(0,0,0,0) !important;
-	border-bottom-color: rgba(0,0,0,0) !important;
 } 
 .edys-sw-search-fin-right { 
 	margin-left: -40px;
 	border-top-color: transparent !important;
 	border-left-color: transparent !important;
 	border-bottom-color: transparent !important;
-	border-top-color: rgba(0,0,0,0) !important;
-	border-left-color: rgba(0,0,0,0) !important;
-	border-bottom-color: rgba(0,0,0,0) !important;
 } 
 .edys-sw-search-fin-top { 
 	margin-bottom:-40px;
 	border-left-color: transparent !important;
 	border-right-color: transparent !important;
 	border-bottom-color: transparent !important;
-	border-left-color: rgba(0,0,0,0) !important;
-	border-right-color: rgba(0,0,0,0) !important;
-	border-bottom-color: rgba(0,0,0,0) !important;
 } 
 .edys-sw-search-fin-bottom { 
 	margin-top: -40px;
 	border-top-color: transparent !important;
 	border-right-color: transparent !important;
 	border-left-color: transparent !important;
-	border-top-color: rgba(0,0,0,0) !important;
-	border-right-color: rgba(0,0,0,0) !important;
-	border-left-color: rgba(0,0,0,0) !important;
 }
