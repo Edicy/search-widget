@@ -85,9 +85,18 @@
         },
 
         get_jquery: function(f) {
-            if (window.jQuery === undefined || window.jQuery.fn.jquery < this.settings.jquery_atleast_version) {
-                this.load_script(this.settings.jquery_url,function() {
+            if ( window.jQuery === undefined ){
+				this.load_script(this.settings.jquery_url,function() {
                    $ = window.jQuery.noConflict(true);
+                   f();
+                });
+			} else if ( window.jQuery.fn.jquery < this.settings.jquery_atleast_version ) {
+                var old_script = window.jQuery;
+				var old$ = (window.$ !== undefined ) ? window.$ : null;
+				this.load_script(this.settings.jquery_url,function() {
+                   $ = window.jQuery.noConflict(true);
+				   window.jQuery = old_script;
+				   if( old$ != null ) { window.$ = old$; }
                    f();
                 });
             } else {
