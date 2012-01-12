@@ -380,14 +380,16 @@
                 } else {
                     var fin = false;
                 }
+				var finh = (fin != false) ? fin.height : 0;
 
                 switch ( this.settings.popup_position ){
                     case "auto":
-                        if ( viewport.right > (input_pos.right + pop.width()) ){ /* esimesena proovitakse asetada paremale */
+						
+                        if ( viewport.right > (input_pos.right + pop.width()) && viewport.top < (input_pos.top - (finh/2) ) ){ /* esimesena proovitakse asetada paremale */
                             this.position_popup_right(pop, input, viewport, input_pos, fin);
-                        } else if(viewport.left < (input_pos.left - pop.width())){ /* siis vasakule */
+                        } else if(viewport.left < (input_pos.left - pop.width()) && viewport.top < (input_pos.top - (finh/2) )  ){ /* siis vasakule */
                             this.position_popup_left(pop, input, viewport, input_pos, fin);
-                        } else if(viewport.top < (input_pos.top - pop.height())){ /* siis üles */
+                        } else if(viewport.top < (input_pos.top - pop.outerHeight())){ /* siis üles */
                             this.position_popup_top(pop, input, viewport, input_pos, fin);
                         } else { /* kui midagi üle ei j22 siis alla (mahub tavaliselt alati kuna lehed üldiselt venivad) */
                             this.position_popup_bottom(pop, input, viewport, input_pos, fin);
