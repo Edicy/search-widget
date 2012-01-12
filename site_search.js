@@ -189,7 +189,7 @@
 
             /* run */
             this.init( user_options );
-        }
+        };
 
         searcher.prototype = {
             init: function( options ){
@@ -365,7 +365,8 @@
                         bottom:  $(window).scrollTop()+$(window).height(),
                         right: $(window).scrollLeft()+$(window).width()
                     },
-                    input_pos = input.offset();
+                    input_pos = input.offset(),
+					fin = null;
 
                 input_pos.bottom = input_pos.top+input.outerHeight();
                 input_pos.right = input_pos.left+input.outerWidth();
@@ -373,13 +374,13 @@
                 input_pos.height = input.outerHeight();
 
                 if ( this.settings.display_fin ){
-                    var thefin = $("." + this.settings.system_classes.fin),
+                    var thefin = $("." + this.settings.system_classes.fin);
                         fin = {
                             width: thefin.outerWidth() + parseInt(thefin.css("borderLeftWidth"),10) + parseInt(thefin.css("borderRightWidth"),10),
                             height: thefin.outerHeight() + parseInt(thefin.css("borderTopWidth"),10) + parseInt(thefin.css("borderBottomWidth"),10)
                         };
                 } else {
-                    var fin = false;
+                    fin = false;
                 }
 				var finh = (fin != false) ? fin.height : 0;
 
@@ -417,7 +418,7 @@
                     left: (fin !== false) ? input_pos.left - pop.outerWidth() - (fin.width * this.settings.fin_shift_percent) : input_pos.left - pop.outerWidth(),
                     right: (fin !== false) ? input_pos.left - (fin.width * this.settings.fin_shift_percent) : input_pos.left,
                     bottom: (((input_pos.bottom - input_pos.top) / 2) + input_pos.top) + (pop.outerHeight() / 2)
-                }
+                };
                 this.fix_bounds_and_position(pop, newPos, viewport, input_pos, "left", fin);
             },
 
@@ -427,7 +428,7 @@
                     left: (fin !== false) ? input_pos.right + (fin.width * this.settings.fin_shift_percent) : input_pos.right,
                     right: (fin !== false) ? input_pos.left + pop.outerWidth() + (fin.width * this.settings.fin_shift_percent) : input_pos.left + pop.outerWidth(),
                     bottom: (((input_pos.bottom - input_pos.top) / 2) + input_pos.top) + (pop.outerHeight() / 2)
-                }
+                };
                 this.fix_bounds_and_position(pop, newPos, viewport, input_pos, "right", fin);
             },
 
@@ -437,7 +438,7 @@
                     left: input_pos.left - ((pop.outerWidth() - input_pos.width) / 2),
                     right: input_pos.right + ((pop.outerWidth() - input_pos.width) / 2),
                     bottom: (fin !== false) ? input_pos.top - (fin.width * this.settings.fin_shift_percent) : input_pos.top
-                }
+                };
                 this.fix_bounds_and_position(pop, newPos, viewport, input_pos, "top", fin);
             },
 
@@ -447,11 +448,11 @@
                     left: input_pos.left - ((pop.outerWidth() - input_pos.width) / 2),
                     right: input_pos.right + ((pop.outerWidth() - input_pos.width) / 2),
                     bottom: (fin !== false) ? input_pos.bottom + pop.outerHeight() + (fin.width * this.settings.fin_shift_percent) : input_pos.bottom + pop.outerHeight()
-                }
+                };
                 this.fix_bounds_and_position(pop, newPos, viewport, input_pos, "bottom", fin);
             },
 
-            fix_bounds_and_position: function ( pop, pos,viewport, input_pos, fin_mode, fin ) {
+            fix_bounds_and_position: function ( pop, pos, viewport, input_pos, fin_mode, fin ) {
                 var newPos = pos;
 
                 /* fix popup position */
@@ -473,12 +474,13 @@
 
                 /* fix fin position */
                 if (this.settings.display_fin) {
-                    var thefin = pop.find("."+this.settings.system_classes.fin);
+                    var thefin = pop.find("."+this.settings.system_classes.fin),
+						fin_left_pos,fin_top_pos;
                     this.remove_fin_classes(thefin);
                     switch(fin_mode) {
                         case "bottom":
                             thefin.addClass(this.settings.system_classes.fin_bottom).addClass(this.settings.fin_bottom_class);
-                            var fin_left_pos = ((input_pos.right - input_pos.left) / 2) + (input_pos.left - newPos.left);
+                            fin_left_pos = ((input_pos.right - input_pos.left) / 2) + (input_pos.left - newPos.left);
                             thefin.css({
                                 left: fin_left_pos + "px",
                                 top: "0px",
@@ -487,7 +489,7 @@
                         break;
                         case "top":
                             thefin.addClass(this.settings.system_classes.fin_top).addClass(this.settings.fin_top_class);
-                            var fin_left_pos = ((input_pos.right-input_pos.left) / 2) + (input_pos.left - newPos.left);
+                           	fin_left_pos = ((input_pos.right-input_pos.left) / 2) + (input_pos.left - newPos.left);
                             thefin.css({
                                 left: fin_left_pos + "px",
                                 top: "auto",
@@ -496,7 +498,7 @@
                         break;
                         case "left":
                             thefin.addClass(this.settings.system_classes.fin_left).addClass(this.settings.fin_left_class);
-                            var fin_top_pos = ((input_pos.bottom - input_pos.top) / 2) + (input_pos.top - newPos.top);
+                            fin_top_pos = ((input_pos.bottom - input_pos.top) / 2) + (input_pos.top - newPos.top);
 							if ( fin_top_pos < 0 + (thefin.outerHeight() / 3) ) {
 								fin_top_pos = 0 + (thefin.outerHeight() / 3);
 							}
@@ -511,7 +513,7 @@
                         break;
                         case "right":
                             thefin.addClass(this.settings.system_classes.fin_right).addClass(this.settings.fin_right_class);
-                            var fin_top_pos = ((input_pos.bottom-input_pos.top) / 2) + (input_pos.top-newPos.top);
+                           	fin_top_pos = ((input_pos.bottom-input_pos.top) / 2) + (input_pos.top-newPos.top);
 							if ( fin_top_pos < 0 + (thefin.outerHeight() / 3) ) {
 								fin_top_pos = 0 + (thefin.outerHeight() / 3);
 							}
@@ -580,6 +582,7 @@
                 return methods.init.apply( this, arguments );
             } else {
                 $.error( 'Method ' +  method + ' does not exist on jQuery.site_search' );
+				return null;
             }
         };
 
