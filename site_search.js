@@ -324,6 +324,9 @@
                         s_c.setLinkTarget(google.search.Search.LINK_TARGET_SELF);
                 }
                 s_c.draw(opts.popup_element.get(0));
+				if( opts.popup_element.find('.gsc-control').get(0).scrollIntoView ) {
+					opts.popup_element.find('.gsc-control').get(0).scrollIntoView = function(){ return false; };
+				}
             },
 
             search_complete: function(input){
