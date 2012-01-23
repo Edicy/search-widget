@@ -57,6 +57,8 @@ Main configuration variables:
     search_input => class that defines the seach element input. default = ".edys-search-input"
     search_form: class that defines the seach element form. default = ".edys-search",
 
+	default_stylesheet_enabled => deafult = true. Values true/false If set to false default css will not be loaded.
+
     popup_position => default = "auto". Values ("auto"/"left"/"right"/"bottom"/"top"). Defines the popup position in regard to the search input.
     popup_min_margin => default = 10; Defines How close to window border popup can position itself in pixels.
     display_fin => default = true. Values (false/true). Defines if the little fin is shown beside search popup. With default design set to false if IE6 support is needed.
@@ -113,3 +115,120 @@ Additional configuration variables:
 
     Mutiple search boxes can be applied accross the page.
     Also multiple js files can be loaded, but only the first is initiated. Code detects that search is loaded and does not continue.
+
+#Default styles
+	can be added to header as css and block script from loading css dynamically itselt. 
+	Should fix some flickering (eg. @fontface ) problems when loading page (css loaded at once and browser does not rerender content aftewards)
+	loading stylesheetcan be disabled with option default_stylesheet_enabled = false
+	
+	.edys-sw-search-popup { 
+		background: #e1e1e1;
+		-moz-border-radius: 5px; 
+		-webkit-border-radius: 5px; 
+		border-radius: 5px;
+		width: 330px; 
+		position: absolute; 
+		z-index: 10000;
+		-moz-box-shadow: 0px 2px 15px rgba(0,0,0,0.15);
+		-webkit-box-shadow: 0px 2px 15px rgba(0,0,0,0.15);
+		box-shadow: 0px 2px 15px rgba(0,0,0,0.15);
+		color: #484d4f;
+		font-size: 12px;
+		font: 12px/14px "Helvetica Neue", Helvetica, Arial, sans-serif; 
+		padding: 10px 0px 10px 0px;
+		-moz-text-shadow: 0 1px 0 #ffffff;
+		-webkit-text-shadow: 0 1px 0 #ffffff;
+		text-shadow: 0 1px 0 #ffffff;
+		text-align: left;
+		-moz-opacity: 0.95;
+		-webkit-opacity: 0.95;
+		opacity: 0.95;
+	} 
+	.edys-sw-search-popup table { border-collapse: collapse; }
+	.edys-sw-search-popup .gs-title {
+		color: #1b2124;
+		font-weight: bold;
+		text-decoration: none;
+		padding: 0 0 10px 0;
+	}
+	.edys-sw-search-container-close { 
+		display: block; 
+		float: right; 
+		overflow: hidden; 
+		width: 10px;
+		height: 11px;
+		clear: both; 
+		margin-right: 10px;
+		background: url("http://static.kraftal.com/assets/site_search/3.0/site-search-closebtn.png") no-repeat right 0; 
+	} 
+	.edys-sw-search-masking-iframe { 
+		width: 340px; 
+		position: absolute; 
+		border: none; 
+		z-index: 9000; 
+	} 
+	.edys-sw-search-container-noresults { 
+		padding: 20px; 
+		text-align: center;
+	} 
+	.edys-sw-search-popup .gsc-result-siteSearch {
+		margin: 0px 10px 10px 10px;
+		overflow: hidden;
+	} 
+	.edys-sw-search-popup .gsc-results {
+		padding-top: 30px;
+		margin-top: -20px;
+		overflow: hidden; 
+	}
+	.edys-sw-search-popup .gsc-cursor-box {  
+		border-top: 1px solid #b9b9b9;
+		padding-top: 10px;
+		font-size: 14px;
+		color: #0066bb;
+		text-align: right;
+		padding-right: 10px;
+	} 
+	.edys-sw-search-popup .gsc-cursor-page { 
+		display: inline; 
+		cursor: pointer; 
+		padding: 3px 5px; 
+	} 
+	.edys-sw-search-popup .gsc-cursor-page:hover, .edys-sw-search-popup .gsc-cursor-current-page { 
+		color: #484d4f; 
+	} 
+	.edys-sw-search-popup .gsc-cursor-current-page { font-weight: bold; } 
+	.edys-sw-search-popup .gsc-resultsHeader, .edys-sw-search-popup .gsc-twiddle, .edys-sw-search-popup .gs-watermark, .edys-sw-search-popup .gs-visibleUrl, .edys-sw-search-popup .gsc-trailing-more-results { display: none; } 
+	.edys-sw-search-fin { 
+		width:0px; 
+		height:0px; 
+		position: absolute;
+		border-width: 20px;
+		margin-top:-20px;
+		margin-left:-20px;
+		border-style: solid; 
+		border-color: #e1e1e1;
+	} 
+	.edys-sw-search-fin-left { 
+		margin-right:-40px;
+		border-top-color: transparent !important;
+		border-right-color: transparent !important;
+		border-bottom-color: transparent !important;
+	} 
+	.edys-sw-search-fin-right { 
+		margin-left: -40px;
+		border-top-color: transparent !important;
+		border-left-color: transparent !important;
+		border-bottom-color: transparent !important;
+	} 
+	.edys-sw-search-fin-top { 
+		margin-bottom:-40px;
+		border-left-color: transparent !important;
+		border-right-color: transparent !important;
+		border-bottom-color: transparent !important;
+	} 
+	.edys-sw-search-fin-bottom { 
+		margin-top: -40px;
+		border-top-color: transparent !important;
+		border-right-color: transparent !important;
+		border-left-color: transparent !important;
+	}

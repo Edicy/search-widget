@@ -55,6 +55,7 @@
 .edys-sw-search-popup .gsc-results {
 	padding-top: 30px;
 	margin-top: -20px;
+	overflow: hidden; 
 }
 .edys-sw-search-popup .gsc-cursor-box {  
 	border-top: 1px solid #b9b9b9;
