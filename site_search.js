@@ -119,7 +119,7 @@
 
     };
 
-    site_search_init.run();
+
     /* initialisation module end*/
 
     /* function to apply site-search module to jquery. can be used as separate if function substituted with jquery wrapper */
@@ -592,5 +592,6 @@
     };
 
 	window.apply_site_search_module = apply_site_search_module;
+	site_search_init.run();
 
 })();
