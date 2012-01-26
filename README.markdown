@@ -48,44 +48,42 @@ To configure a javascript object "edys_site_search_options" for configuration ca
 
 ##Main configuration variables:
 
-  `host_name` host name of the site to search. By default the host name derived from the url address is taken (without www. prefix)
-
-  `autorun_init` default = true. If set tu false bloks all automatic loading of module. if site_search jquery module is needed only it can be called out in javascript "apply_site_search_module(jQuery);" (jQuery and google search mus be preloaded then).
-    
-  `autorun_search` default = true. jQuery / google search / jquery.site_search modules will be loaded, but site search will not be automatically bound to forms.
-    
-  `init_complete`  => default = null; function can be bound to init complete and will be fired after module has been loaded. ex:  edys_site_search_options = { init_complete: function($){ alert("foo"); } }
-
-  `without_popup` Values (true/false). Default = false. If set to true no popup will be displayed and search results will be displayed inside user defined div (without_popup_element_id).
+* `host_name` host name of the site to search. By default the host name derived from the url address is taken (without www. prefix)
+* `autorun_init` default = true. If set tu false bloks all automatic loading of module. if site_search jquery module is needed only it can be called out in javascript "apply_site_search_module(jQuery);" (jQuery and google search mus be preloaded then).
+* `autorun_search` default = true. jQuery / google search / jquery.site_search modules will be loaded, but site search will not be automatically bound to forms.
   
-  `without_popup_element_id` the id of div where results are directed when without_popup = true.
-  
-  `without_popup_noresults_id` When without_popup = true, the div that will be shown when zero search results are returned.
+`init_complete`  => default = null; function can be bound to init complete and will be fired after module has been loaded. ex:  edys_site_search_options = { init_complete: function($){ alert("foo"); } }
 
-  `texts` variable to override default texts. Usage:
-  
-      texts: {
-          close: "Close",
-          noresults: "Your search did not match any documents"
-      }
+`without_popup` Values (true/false). Default = false. If set to true no popup will be displayed and search results will be displayed inside user defined div (without_popup_element_id).
 
-  `loading_image` the loading gif image that shows inside search input when searching. Encoded in base64
+`without_popup_element_id` the id of div where results are directed when without_popup = true.
 
-  `search_input` class that defines the seach element input. default = ".edys-search-input"
-  
-  `search_form` class that defines the seach element form. default = ".edys-search",
+`without_popup_noresults_id` When without_popup = true, the div that will be shown when zero search results are returned.
 
-  `default_stylesheet_enabled` default = true. Values true/false If set to false default css will not be loaded.
+`texts` variable to override default texts. Usage:
 
-  `popup_position` default = "auto". Values ("auto"/"left"/"right"/"bottom"/"top"). Defines the popup position in regard to the search input.
-  
-  `popup_min_margin` default = 10; Defines How close to window border popup can position itself in pixels.
-  
-  `display_fin` default = true. Values (false/true). Defines if the little fin is shown beside search popup. With default design set to false if IE6 support is needed.
-  
-  `link_target` default = "_self", Values ("_self" / "_blank" / "_top" / "_parent"). Defines how search links will open. Like link target attribute ("_self" = in the same window, "_blank" = in a new window etc.).
+    texts: {
+        close: "Close",
+        noresults: "Your search did not match any documents"
+    }
 
-  `sideclick_enabled` default => true. Defines if search popup closes when somewhare on page is clicked that is not inside the serach results popup.
+`loading_image` the loading gif image that shows inside search input when searching. Encoded in base64
+
+`search_input` class that defines the seach element input. default = ".edys-search-input"
+
+`search_form` class that defines the seach element form. default = ".edys-search",
+
+`default_stylesheet_enabled` default = true. Values true/false If set to false default css will not be loaded.
+
+`popup_position` default = "auto". Values ("auto"/"left"/"right"/"bottom"/"top"). Defines the popup position in regard to the search input.
+
+`popup_min_margin` default = 10; Defines How close to window border popup can position itself in pixels.
+
+`display_fin` default = true. Values (false/true). Defines if the little fin is shown beside search popup. With default design set to false if IE6 support is needed.
+
+`link_target` default = "_self", Values ("_self" / "_blank" / "_top" / "_parent"). Defines how search links will open. Like link target attribute ("_self" = in the same window, "_blank" = in a new window etc.).
+
+`sideclick_enabled` default => true. Defines if search popup closes when somewhare on page is clicked that is not inside the serach results popup.
 
 ##Additional configuration variables:
 
