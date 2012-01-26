@@ -1,3 +1,6 @@
+# Edicy search widget
+Edicy graphical implementaton plugin for google ajax search.
+
 # Usage
 
 Minimal required snippet:
@@ -9,21 +12,29 @@ Minimal required snippet:
 
 For designing in css- the serach widget uses the following classes to mark its dom elements:
 
-    .edys-search-popup  =>  the popup that appears when search is initiated
-    .edys-search-container-noresults => box inside popup that appears when no results for search are found.
-    .edys-search-container-close => popup close button
-    .edys-search-masking-iframe => iframe behind the popup to mask flash and other that might penetrate through. shoukd have lower z-index than .edys-search-popup
-    .edys-search-fin => the little arrow on the side of popup
-    .edys-search-fin-left => litle arrow class override when popup is to the left side of the search input
-    .edys-search-fin-right => litle arrow class override when popup is to the right side of the search input
-    .edys-search-fin-top => litle arrow class override when popup is above the search input
-    .edys-search-fin-bottom => litle arrow class override when popup is below the  search input
+  `.edys-search-popup` the popup that appears when search is initiated
 
-    by default google search data with its defautl classes will be loaded into div .edys-search-popup
+  `.edys-search-container-noresults` box inside popup that appears when no results for search are found.
+
+  `.edys-search-container-close` popup close button
+
+  `.edys-search-masking-iframe` iframe behind the popup to mask flash and other that might penetrate through. Should have lower z-index than .edys-search-popup
+
+  `.edys-search-fin` the little arrow on the side of popup
+
+  `.edys-search-fin-left` litle arrow class override when popup is to the left side of the search input
+
+  `.edys-search-fin-right` litle arrow class override when popup is to the right side of the search input
+
+  `.edys-search-fin-top` litle arrow class override when popup is above the search input
+
+  `.edys-search-fin-bottom` litle arrow class override when popup is below the  search input
+
+  by default google search data with its default classes will be loaded into div .edys-search-popup
 
 #Configuration
 
-To configure a javascript object "edys_site_search_options" for configuration can be applied before <script src="site-search.js" type="text/javascript"> </script> tag  like this:
+To configure a javascript object "edys_site_search_options" for configuration can be applied before `<script src="site-search.js" type="text/javascript"> </script>` tag  like this:
 
     var edys_site_search_options = {
         without_popup: true,
@@ -35,38 +46,48 @@ To configure a javascript object "edys_site_search_options" for configuration ca
         }
     }
 
-Main configuration variables:
-    host_name => host name of the site to search. by default the host name derived from the url address is taken
+##Main configuration variables:
 
-    autorun_init => default = true. if set tu false bloks all automatic loading of module. if site_search jquery module is needed only it can be called out in javascript "apply_site_search_module(jQuery);" (jQuery and google search mus be preloaded then).
-    autorun_search => default = true. jQuery / google search / jquery.site_search modules will be loaded, but site search will not be automatically bound to forms.
-    init_complete  => default = null; function can be bound to init complete and will be fired after module has been loaded. ex:  edys_site_search_options = { init_complete: function($){ alert("foo"); } }
+  `host_name` host name of the site to search. By default the host name derived from the url address is taken (without www. prefix)
 
-    without_popup =>  Values (true/false). Default = false. If set to true no popup will be displayed and search results will be displayed inside user defined div (without_popup_element_id).
-    without_popup_element_id => the id of div where results are directed when without_popup = true.
-    without_popup_noresults_id => When without_popup = true, the div that will be shown when zero search results are returned.
+  `autorun_init` default = true. If set tu false bloks all automatic loading of module. if site_search jquery module is needed only it can be called out in javascript "apply_site_search_module(jQuery);" (jQuery and google search mus be preloaded then).
+    
+  `autorun_search` default = true. jQuery / google search / jquery.site_search modules will be loaded, but site search will not be automatically bound to forms.
+    
+  `init_complete`  => default = null; function can be bound to init complete and will be fired after module has been loaded. ex:  edys_site_search_options = { init_complete: function($){ alert("foo"); } }
 
-    texts => variable to override default texts. Usage:
-        texts: {
-            close: "Close",
-            noresults: "Your search did not match any documents"
-        }
+  `without_popup` Values (true/false). Default = false. If set to true no popup will be displayed and search results will be displayed inside user defined div (without_popup_element_id).
+  
+  `without_popup_element_id` the id of div where results are directed when without_popup = true.
+  
+  `without_popup_noresults_id` When without_popup = true, the div that will be shown when zero search results are returned.
 
-    loading_image => the loading gif image that shows inside search input when searching. Encoded in base64
+  `texts` variable to override default texts. Usage:
+  
+      texts: {
+          close: "Close",
+          noresults: "Your search did not match any documents"
+      }
 
-    search_input => class that defines the seach element input. default = ".edys-search-input"
-    search_form: class that defines the seach element form. default = ".edys-search",
+  `loading_image` the loading gif image that shows inside search input when searching. Encoded in base64
 
-	default_stylesheet_enabled => deafult = true. Values true/false If set to false default css will not be loaded.
+  `search_input` class that defines the seach element input. default = ".edys-search-input"
+  
+  `search_form` class that defines the seach element form. default = ".edys-search",
 
-    popup_position => default = "auto". Values ("auto"/"left"/"right"/"bottom"/"top"). Defines the popup position in regard to the search input.
-    popup_min_margin => default = 10; Defines How close to window border popup can position itself in pixels.
-    display_fin => default = true. Values (false/true). Defines if the little fin is shown beside search popup. With default design set to false if IE6 support is needed.
-    link_target => default = "_self", Values ("_self" / "_blank" / "_top" / "_parent"). Defines how search links will open. Like link target attribute ("_self" = in the same window, "_blank" = in a new window etc.).
+  `default_stylesheet_enabled` default = true. Values true/false If set to false default css will not be loaded.
 
-    sideclick_enabled = default => true. Defines if search popup closes when somewhare on page is clicked that is not inside the serach results popup.
+  `popup_position` default = "auto". Values ("auto"/"left"/"right"/"bottom"/"top"). Defines the popup position in regard to the search input.
+  
+  `popup_min_margin` default = 10; Defines How close to window border popup can position itself in pixels.
+  
+  `display_fin` default = true. Values (false/true). Defines if the little fin is shown beside search popup. With default design set to false if IE6 support is needed.
+  
+  `link_target` default = "_self", Values ("_self" / "_blank" / "_top" / "_parent"). Defines how search links will open. Like link target attribute ("_self" = in the same window, "_blank" = in a new window etc.).
 
-Additional configuration variables:
+  `sideclick_enabled` default => true. Defines if search popup closes when somewhare on page is clicked that is not inside the serach results popup.
+
+##Additional configuration variables:
 
     google_api_url => address where google api is lodaded if not allready loaded. defaulot ="http://www.google.com/jsapi"
 
@@ -117,118 +138,118 @@ Additional configuration variables:
     Also multiple js files can be loaded, but only the first is initiated. Code detects that search is loaded and does not continue.
 
 #Default styles
-	can be added to header as css and block script from loading css dynamically itselt. 
-	Should fix some flickering (eg. @fontface ) problems when loading page (css loaded at once and browser does not rerender content aftewards)
-	loading stylesheetcan be disabled with option default_stylesheet_enabled = false
-	
-	.edys-sw-search-popup { 
-		background: #e1e1e1;
-		-moz-border-radius: 5px; 
-		-webkit-border-radius: 5px; 
-		border-radius: 5px;
-		width: 330px; 
-		position: absolute; 
-		z-index: 10000;
-		-moz-box-shadow: 0px 2px 15px rgba(0,0,0,0.15);
-		-webkit-box-shadow: 0px 2px 15px rgba(0,0,0,0.15);
-		box-shadow: 0px 2px 15px rgba(0,0,0,0.15);
-		color: #484d4f;
-		font-size: 12px;
-		font: 12px/14px "Helvetica Neue", Helvetica, Arial, sans-serif; 
-		padding: 10px 0px 10px 0px;
-		-moz-text-shadow: 0 1px 0 #ffffff;
-		-webkit-text-shadow: 0 1px 0 #ffffff;
-		text-shadow: 0 1px 0 #ffffff;
-		text-align: left;
-		-moz-opacity: 0.95;
-		-webkit-opacity: 0.95;
-		opacity: 0.95;
-	} 
-	.edys-sw-search-popup table { border-collapse: collapse; }
-	.edys-sw-search-popup .gs-title {
-		color: #1b2124;
-		font-weight: bold;
-		text-decoration: none;
-		padding: 0 0 10px 0;
-	}
-	.edys-sw-search-container-close { 
-		display: block; 
-		float: right; 
-		overflow: hidden; 
-		width: 10px;
-		height: 11px;
-		clear: both; 
-		margin-right: 10px;
-		background: url("http://static.kraftal.com/assets/site_search/3.0/site-search-closebtn.png") no-repeat right 0; 
-	} 
-	.edys-sw-search-masking-iframe { 
-		width: 340px; 
-		position: absolute; 
-		border: none; 
-		z-index: 9000; 
-	} 
-	.edys-sw-search-container-noresults { 
-		padding: 20px; 
-		text-align: center;
-	} 
-	.edys-sw-search-popup .gsc-result-siteSearch {
-		margin: 0px 10px 10px 10px;
-		overflow: hidden;
-	} 
-	.edys-sw-search-popup .gsc-results {
-		padding-top: 30px;
-		margin-top: -20px;
-		overflow: hidden; 
-	}
-	.edys-sw-search-popup .gsc-cursor-box {  
-		border-top: 1px solid #b9b9b9;
-		padding-top: 10px;
-		font-size: 14px;
-		color: #0066bb;
-		text-align: right;
-		padding-right: 10px;
-	} 
-	.edys-sw-search-popup .gsc-cursor-page { 
-		display: inline; 
-		cursor: pointer; 
-		padding: 3px 5px; 
-	} 
-	.edys-sw-search-popup .gsc-cursor-page:hover, .edys-sw-search-popup .gsc-cursor-current-page { 
-		color: #484d4f; 
-	} 
-	.edys-sw-search-popup .gsc-cursor-current-page { font-weight: bold; } 
-	.edys-sw-search-popup .gsc-resultsHeader, .edys-sw-search-popup .gsc-twiddle, .edys-sw-search-popup .gs-watermark, .edys-sw-search-popup .gs-visibleUrl, .edys-sw-search-popup .gsc-trailing-more-results { display: none; } 
-	.edys-sw-search-fin { 
-		width:0px; 
-		height:0px; 
-		position: absolute;
-		border-width: 20px;
-		margin-top:-20px;
-		margin-left:-20px;
-		border-style: solid; 
-		border-color: #e1e1e1;
-	} 
-	.edys-sw-search-fin-left { 
-		margin-right:-40px;
-		border-top-color: transparent !important;
-		border-right-color: transparent !important;
-		border-bottom-color: transparent !important;
-	} 
-	.edys-sw-search-fin-right { 
-		margin-left: -40px;
-		border-top-color: transparent !important;
-		border-left-color: transparent !important;
-		border-bottom-color: transparent !important;
-	} 
-	.edys-sw-search-fin-top { 
-		margin-bottom:-40px;
-		border-left-color: transparent !important;
-		border-right-color: transparent !important;
-		border-bottom-color: transparent !important;
-	} 
-	.edys-sw-search-fin-bottom { 
-		margin-top: -40px;
-		border-top-color: transparent !important;
-		border-right-color: transparent !important;
-		border-left-color: transparent !important;
-	}
+  can be added to header as css and block script from loading css dynamically itselt. 
+  Should fix some flickering (eg. @fontface ) problems when loading page (css loaded at once and browser does not rerender content aftewards)
+  loading stylesheetcan be disabled with option default_stylesheet_enabled = false
+  
+  .edys-sw-search-popup { 
+    background: #e1e1e1;
+    -moz-border-radius: 5px; 
+    -webkit-border-radius: 5px; 
+    border-radius: 5px;
+    width: 330px; 
+    position: absolute; 
+    z-index: 10000;
+    -moz-box-shadow: 0px 2px 15px rgba(0,0,0,0.15);
+    -webkit-box-shadow: 0px 2px 15px rgba(0,0,0,0.15);
+    box-shadow: 0px 2px 15px rgba(0,0,0,0.15);
+    color: #484d4f;
+    font-size: 12px;
+    font: 12px/14px "Helvetica Neue", Helvetica, Arial, sans-serif; 
+    padding: 10px 0px 10px 0px;
+    -moz-text-shadow: 0 1px 0 #ffffff;
+    -webkit-text-shadow: 0 1px 0 #ffffff;
+    text-shadow: 0 1px 0 #ffffff;
+    text-align: left;
+    -moz-opacity: 0.95;
+    -webkit-opacity: 0.95;
+    opacity: 0.95;
+  } 
+  .edys-sw-search-popup table { border-collapse: collapse; }
+  .edys-sw-search-popup .gs-title {
+    color: #1b2124;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 0 0 10px 0;
+  }
+  .edys-sw-search-container-close { 
+    display: block; 
+    float: right; 
+    overflow: hidden; 
+    width: 10px;
+    height: 11px;
+    clear: both; 
+    margin-right: 10px;
+    background: url("http://static.kraftal.com/assets/site_search/3.0/site-search-closebtn.png") no-repeat right 0; 
+  } 
+  .edys-sw-search-masking-iframe { 
+    width: 340px; 
+    position: absolute; 
+    border: none; 
+    z-index: 9000; 
+  } 
+  .edys-sw-search-container-noresults { 
+    padding: 20px; 
+    text-align: center;
+  } 
+  .edys-sw-search-popup .gsc-result-siteSearch {
+    margin: 0px 10px 10px 10px;
+    overflow: hidden;
+  } 
+  .edys-sw-search-popup .gsc-results {
+    padding-top: 30px;
+    margin-top: -20px;
+    overflow: hidden; 
+  }
+  .edys-sw-search-popup .gsc-cursor-box {  
+    border-top: 1px solid #b9b9b9;
+    padding-top: 10px;
+    font-size: 14px;
+    color: #0066bb;
+    text-align: right;
+    padding-right: 10px;
+  } 
+  .edys-sw-search-popup .gsc-cursor-page { 
+    display: inline; 
+    cursor: pointer; 
+    padding: 3px 5px; 
+  } 
+  .edys-sw-search-popup .gsc-cursor-page:hover, .edys-sw-search-popup .gsc-cursor-current-page { 
+    color: #484d4f; 
+  } 
+  .edys-sw-search-popup .gsc-cursor-current-page { font-weight: bold; } 
+  .edys-sw-search-popup .gsc-resultsHeader, .edys-sw-search-popup .gsc-twiddle, .edys-sw-search-popup .gs-watermark, .edys-sw-search-popup .gs-visibleUrl, .edys-sw-search-popup .gsc-trailing-more-results { display: none; } 
+  .edys-sw-search-fin { 
+    width:0px; 
+    height:0px; 
+    position: absolute;
+    border-width: 20px;
+    margin-top:-20px;
+    margin-left:-20px;
+    border-style: solid; 
+    border-color: #e1e1e1;
+  } 
+  .edys-sw-search-fin-left { 
+    margin-right:-40px;
+    border-top-color: transparent !important;
+    border-right-color: transparent !important;
+    border-bottom-color: transparent !important;
+  } 
+  .edys-sw-search-fin-right { 
+    margin-left: -40px;
+    border-top-color: transparent !important;
+    border-left-color: transparent !important;
+    border-bottom-color: transparent !important;
+  } 
+  .edys-sw-search-fin-top { 
+    margin-bottom:-40px;
+    border-left-color: transparent !important;
+    border-right-color: transparent !important;
+    border-bottom-color: transparent !important;
+  } 
+  .edys-sw-search-fin-bottom { 
+    margin-top: -40px;
+    border-top-color: transparent !important;
+    border-right-color: transparent !important;
+    border-left-color: transparent !important;
+  }
