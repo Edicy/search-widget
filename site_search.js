@@ -85,24 +85,29 @@
         },
 
         get_jquery: function(f) {
-            if ( window.jQuery === undefined ){
-				this.load_script(this.settings.jquery_url,function() {
-                   $ = window.jQuery.noConflict(true);
-                   f();
-                });
-			} else if ( window.jQuery.fn.jquery < this.settings.jquery_atleast_version ) {
-                var old_script = window.jQuery;
-				var old$ = (window.$ !== undefined ) ? window.$ : null;
-				this.load_script(this.settings.jquery_url,function() {
-                   $ = window.jQuery.noConflict(true);
-				   window.jQuery = old_script;
-				   if( old$ != null ) { window.$ = old$; }
-                   f();
-                });
-            } else {
-                $ = window.jQuery;
-                f();
-            }
+            var old_doc_load = document.body.onload || function () {},
+                me = this;
+            document.body.onload = function(){
+                old_doc_load();
+                if ( window.jQuery === undefined ){
+    				me.load_script(me.settings.jquery_url,function() {
+                       $ = window.jQuery.noConflict(true);
+                       f();
+                    });
+    			} else if ( window.jQuery.fn.jquery < me.settings.jquery_atleast_version ) {
+                    var old_script = window.jQuery;
+    				var old$ = (window.$ !== undefined ) ? window.$ : null;
+    				me.load_script(me.settings.jquery_url,function() {
+                       $ = window.jQuery.noConflict(true);
+    				   window.jQuery = old_script;
+    				   if( old$ != null ) { window.$ = old$; }
+                       f();
+                    });
+                } else {
+                    $ = window.jQuery;
+                    f();
+                }
+            };
         },
 
         /* load google api and search api */
