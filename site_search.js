@@ -152,8 +152,9 @@
                     fin_bottom: "edys-sw-search-fin-bottom",
                     default_stylesheet: "edys-sw-default-stylesheet"
                 },
-
-                default_popup_style: {position: "absolute",display: "none"},
+                
+                popup_css_positioning: 'absolute',
+                default_popup_style: {display: "none"},
                 default_closebtn_style: {cursor: "pointer"},
                 default_stylesheet: '.edys-sw-search-popup { background: #e1e1e1; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; width: 330px; position: absolute; z-index: 10000; -moz-box-shadow: 0px 2px 15px rgba(0,0,0,0.15); -webkit-box-shadow: 0px 2px 15px rgba(0,0,0,0.15); box-shadow: 0px 2px 15px rgba(0,0,0,0.15); color: #484d4f; font-size: 12px; font: 12px/14px "Helvetica Neue", Helvetica, Arial, sans-serif; padding: 10px 0px 10px 0px; -moz-text-shadow: 0 1px 0 #ffffff; -webkit-text-shadow: 0 1px 0 #ffffff; text-shadow: 0 1px 0 #ffffff; text-align: left; -moz-opacity: 0.95; -webkit-opacity: 0.95; opacity: 0.95; } .edys-sw-search-popup table { border-collapse: collapse; } .edys-sw-search-popup .gs-title { color: #1b2124; font-weight: bold; text-decoration: none; padding: 0 0 10px 0; } .edys-sw-search-container-close { display: block; float: right; overflow: hidden; width: 10px; height: 11px; clear: both; margin-right: 10px; background: url("'+this.default_images_url+'site-search-closebtn.png") no-repeat right 0; } .edys-sw-search-masking-iframe { width: 340px; position: absolute; border: none; z-index: 9000; } .edys-sw-search-container-noresults { padding: 20px; text-align: center; } .edys-sw-search-popup .gsc-result-siteSearch { margin: 0px 10px 10px 10px; overflow: hidden; } .edys-sw-search-popup .gsc-results { padding-top: 30px; margin-top: -20px; overflow: hidden; } .edys-sw-search-popup .gsc-cursor-box { border-top: 1px solid #b9b9b9; padding-top: 10px; font-size: 14px; color: #0066bb; text-align: right; padding-right: 10px; } .edys-sw-search-popup .gsc-cursor-page { display: inline; cursor: pointer; padding: 3px 5px; } .edys-sw-search-popup .gsc-cursor-page:hover, .edys-sw-search-popup .gsc-cursor-current-page { color: #484d4f; } .edys-sw-search-popup .gsc-cursor-current-page { font-weight: bold; } .edys-sw-search-popup .gsc-resultsHeader, .edys-sw-search-popup .gsc-twiddle, .edys-sw-search-popup .gs-watermark, .edys-sw-search-popup .gs-visibleUrl, .edys-sw-search-popup .gsc-trailing-more-results { display: none; } .edys-sw-search-fin { width:0px; height:0px; position: absolute; border-width: 20px; margin-top:-20px; margin-left:-20px; border-style: solid; border-color: #e1e1e1; } .edys-sw-search-fin-left { margin-right:-40px; border-top-color: transparent !important; border-right-color: transparent !important; border-bottom-color: transparent !important;} .edys-sw-search-fin-right { margin-left: -40px; border-top-color: transparent !important; border-left-color: transparent !important; border-bottom-color: transparent !important;  } .edys-sw-search-fin-top { margin-bottom:-40px; border-left-color: transparent !important; border-right-color: transparent !important; border-bottom-color: transparent !important;  } .edys-sw-search-fin-bottom { margin-top: -40px; border-top-color: transparent !important; border-right-color: transparent !important; border-left-color: transparent !important;}',
                 default_stylesheet_enabled: true,
@@ -211,9 +212,9 @@
             init_popup: function(){
                 var search_popup = $('<div></div>').addClass( this.settings.system_classes.popup )
                                                    .addClass( this.settings.popup_class )
-                                                   .css( this.settings.default_popup_style ),
+                                                   .css( this.settings.default_popup_style ).css('position', this.settings.popup_css_positioning),
                     search_iframe = $("<iframe></iframe>").addClass( this.settings.system_classes.masking_iframe)
-                                                          .addClass(this.settings.masking_iframe_class).hide(),
+                                                          .addClass(this.settings.masking_iframe_class).hide().css('position', this.settings.popup_css_positioning),
                     noresults = $('<div></div>').addClass( this.settings.system_classes.noresults)
                                                 .addClass( this.settings.noresults_class)
                                                 .html( this.settings.texts.noresults ),
@@ -417,7 +418,7 @@
 
             position_popup_left: function(pop,input,viewport,input_pos,fin) {
                 var newPos = {
-                    top: (((input_pos.bottom - input_pos.top) / 2) +input_pos.top) - (pop.outerHeight() / 2),
+                    top: (((input_pos.bottom - input_pos.top) / 2) + input_pos.top) - (pop.outerHeight() / 2),
                     left: (fin !== false) ? input_pos.left - pop.outerWidth() - (fin.width * this.settings.fin_shift_percent) : input_pos.left - pop.outerWidth(),
                     right: (fin !== false) ? input_pos.left - (fin.width * this.settings.fin_shift_percent) : input_pos.left,
                     bottom: (((input_pos.bottom - input_pos.top) / 2) + input_pos.top) + (pop.outerHeight() / 2)
@@ -456,7 +457,8 @@
             },
 
             fix_bounds_and_position: function ( pop, pos, viewport, input_pos, fin_mode, fin ) {
-                var newPos = pos;
+                var newPos = pos,
+                    scroll_fix = (this.settings.popup_css_positioning == 'absolute') ? 0 :  $(window).scrollTop() ;
 
                 /* fix popup position */
                 if ( newPos.left < viewport.left + this.settings.popup_min_margin ) {
@@ -464,12 +466,17 @@
                 } else if ( newPos.right > viewport.right - this.settings.popup_min_margin ) {
                     newPos.left =  viewport.right - pop.outerWidth() - this.settings.popup_min_margin;
                 }
+                
+                if(scroll_fix != 0) {
+                    newPos.top -= scroll_fix;
+                    newPos.bottom -= scroll_fix;
+                }
 
-                if ( newPos.top > viewport.bottom - pop.outerHeight() - this.settings.popup_min_margin && fin_mode != "bottom" && fin_mode != "top" ) {
-                    if(input_pos.bottom + (pop.outerHeight() * 0.05) > viewport.bottom - this.settings.popup_min_margin){
-                        newPos.top = input_pos.bottom + (pop.outerHeight() * 0.05) - pop.outerHeight();
+                if ( newPos.top > (viewport.bottom - scroll_fix) - pop.outerHeight() - this.settings.popup_min_margin && fin_mode != "bottom" && fin_mode != "top" ) {
+                    if(input_pos.bottom + (pop.outerHeight() * 0.05) > (viewport.bottom - scroll_fix)  - this.settings.popup_min_margin){
+                        newPos.top = input_pos.bottom + (pop.outerHeight() * 0.05) - pop.outerHeight() - scroll_fix;
                     } else {
-                        newPos.top = viewport.bottom - pop.outerHeight() - this.settings.popup_min_margin;
+                        newPos.top = viewport.bottom - pop.outerHeight() - this.settings.popup_min_margin - scroll_fix;
                     }
                 }
 
@@ -501,7 +508,7 @@
                         break;
                         case "left":
                             thefin.addClass(this.settings.system_classes.fin_left).addClass(this.settings.fin_left_class);
-                            fin_top_pos = ((input_pos.bottom - input_pos.top) / 2) + (input_pos.top - newPos.top);
+                            fin_top_pos = ((input_pos.bottom - input_pos.top) / 2) + (input_pos.top - newPos.top) - scroll_fix;
 							if ( fin_top_pos < 0 + (thefin.outerHeight() / 3) ) {
 								fin_top_pos = 0 + (thefin.outerHeight() / 3);
 							}
@@ -516,7 +523,7 @@
                         break;
                         case "right":
                             thefin.addClass(this.settings.system_classes.fin_right).addClass(this.settings.fin_right_class);
-                           	fin_top_pos = ((input_pos.bottom-input_pos.top) / 2) + (input_pos.top-newPos.top);
+                           	fin_top_pos = ((input_pos.bottom-input_pos.top) / 2) + (input_pos.top-newPos.top) - scroll_fix;
 							if ( fin_top_pos < 0 + (thefin.outerHeight() / 3) ) {
 								fin_top_pos = 0 + (thefin.outerHeight() / 3);
 							}

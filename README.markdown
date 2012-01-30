@@ -59,6 +59,7 @@ To configure a javascript object "edys_site_search_options" for configuration ca
 * `search_form` class that defines the seach element form. default is `.edys-search`,
 * `default_stylesheet_enabled` default is `true`. Values `true`/`false` If set to `false` default css will not be loaded.
 * `popup_position` default is `auto`. Values (`auto`/`left`/`right`/`bottom`/`top`). Defines the popup position in regard to the search input.
+* `popup_css_positioning` default is `absolute`. If position of search input is inside `position: fixed` container then this value should be set to `fixed'. Otherwise the popup does not follow the input when page is scrolled.  
 * `popup_min_margin` default is `10`; Defines how close to window border popup can position itself in pixels.
 * `display_fin` default is true. Values (`false`/`true`). Defines if the little fin is shown beside search popup. With default design set to false if IE6 support is needed.
 * `link_target` default is "_self", Values ("_self" / "_blank" / "_top" / "_parent"). Defines how search links will open. Like link target attribute ("_self" is in the same window, "_blank" is in a new window etc.).
@@ -81,8 +82,8 @@ To configure a javascript object "edys_site_search_options" for configuration ca
 * `fin_bottom_class` classname of popup fin when popup is at the bottom of search input, default is `edys-search-masking-fin-bottom`.
 
 * `default_popup_style` default css that will be added to the popup on initiation. Default is `{position:"absolute",display:"none" }`.
-* `default_closebtn_style` default css that will be added to popup closebutton on initiation. default is `{cursor:"pointer"}`
-* `fin_style` default css that will be added to popup fin on initiation. default is `{}`
+* `default_closebtn_style` default css that will be added to popup closebutton on initiation. default is `{cursor:"pointer"}`.
+* `fin_style` default css that will be added to popup fin on initiation. default is `{}`.
 * `default_stylesheet` the default stylesheet css string that will be added if front of all stylesheets to document head.
 
 ##Geting searcher object from element and listening to events
