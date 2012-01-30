@@ -49,10 +49,10 @@ To configure a javascript object "edys_site_search_options" for configuration ca
 * `without_popup_noresults_id` When `without_popup` is `true`, the div that will be shown when zero search results are returned.
 * `texts` variable to override default texts. Usage:
 
-    texts: {
-        close: "Close",
-        noresults: "Your search did not match any documents"
-    }
+    `texts: {
+        close: 'Close',
+        noresults: 'Your search did not match any documents'
+    }`
 
 * `loading_image` the loading gif image that shows inside search input when searching. Encoded in base64
 * `search_input` class that defines the seach element input. default is `.edys-search-input`
