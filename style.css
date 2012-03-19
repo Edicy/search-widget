@@ -70,6 +70,8 @@
 	cursor: pointer; 
 	padding: 3px 5px; 
 } 
+
+.edys-sw-search-popup .gsc-url-top, .edys-sw-search-popup .gsc-thumbnail-inside { display: none; }
 .edys-sw-search-popup .gsc-cursor-page:hover, .edys-sw-search-popup .gsc-cursor-current-page { 
 	color: #484d4f; 
 } 
