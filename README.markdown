@@ -28,7 +28,7 @@ by default google search data with its default classes will be loaded into div .
 
 To configure a javascript object "edys_site_search_options" for configuration can be applied before `<script src="site-search.js" type="text/javascript"> </script>` tag  like this:
 
-    var edys_site_search_options is {
+    var edys_site_search_options = {
         without_popup: true,
         without_popup_element_id: "my-div",
         without_popup_noresults_id: "my-div-noresults",
