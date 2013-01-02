@@ -83,31 +83,37 @@
                 (d.getElementsByTagName('head')[0] || d.documentElement).appendChild(js);
             }(document, 'script'));
         },
+        
+        afterLoad: function(f, t) {   
+            var me = t || this;
+            document.readyState !== "complete" ? setTimeout(function() { me.afterLoad(f, me);} ,11) : f();   
+        },
 
         get_jquery: function(f) {
             var old_doc_load = document.body.onload || function () {},
                 me = this;
-            document.body.onload = function(){
+                
+            this.afterLoad(function(){
                 old_doc_load();
                 if ( window.jQuery === undefined ){
-    				me.load_script(me.settings.jquery_url,function() {
+                    me.load_script(me.settings.jquery_url,function() {
                        $ = window.jQuery.noConflict(true);
                        f();
                     });
-    			} else if ( window.jQuery.fn.jquery < me.settings.jquery_atleast_version ) {
+                } else if ( window.jQuery.fn.jquery < me.settings.jquery_atleast_version ) {
                     var old_script = window.jQuery;
-    				var old$ = (window.$ !== undefined ) ? window.$ : null;
-    				me.load_script(me.settings.jquery_url,function() {
+                    var old$ = (window.$ !== undefined ) ? window.$ : null;
+                    me.load_script(me.settings.jquery_url,function() {
                        $ = window.jQuery.noConflict(true);
-    				   window.jQuery = old_script;
-    				   if( old$ != null ) { window.$ = old$; }
+                       window.jQuery = old_script;
+                       if( old$ != null ) { window.$ = old$; }
                        f();
                     });
                 } else {
                     $ = window.jQuery;
                     f();
                 }
-            };
+            });
         },
 
         /* load google api and search api */
@@ -131,7 +137,7 @@
     var apply_site_search_module = function($) {
 
         var searcher = function (form_element, user_options) {
-			this.default_images_url = 'http://static.edicy.com/assets/site_search/3.0/';
+            this.default_images_url = 'http://static.edicy.com/assets/site_search/3.0/';
             this.settings = {
                 search_input: ".edys-search-input",
 
@@ -167,7 +173,7 @@
                 popup_min_margin: 10,
                 fin_style: {},
                 display_fin: true, /* disable to support ie6 */
-				fin_shift_percent: 0.3,
+                fin_shift_percent: 0.3,
                 without_popup: false,
                 without_popup_element_id: "",
                 without_popup_noresults_id: "",
@@ -330,9 +336,9 @@
                         s_c.setLinkTarget(google.search.Search.LINK_TARGET_SELF);
                 }
                 s_c.draw(opts.popup_element.get(0));
-				if( opts.popup_element.find('.gsc-control').get(0).scrollIntoView ) {
-					opts.popup_element.find('.gsc-control').get(0).scrollIntoView = function(){ return false; };
-				}
+                if( opts.popup_element.find('.gsc-control').get(0).scrollIntoView ) {
+                    opts.popup_element.find('.gsc-control').get(0).scrollIntoView = function(){ return false; };
+                }
             },
 
             search_complete: function(input){
@@ -375,7 +381,7 @@
                         right: $(window).scrollLeft()+$(window).width()
                     },
                     input_pos = input.offset(),
-					fin = null;
+                    fin = null;
 
                 input_pos.bottom = input_pos.top+input.outerHeight();
                 input_pos.right = input_pos.left+input.outerWidth();
@@ -391,18 +397,18 @@
                 } else {
                     fin = false;
                 }
-				var finh = (fin != false) ? fin.height : 0;
+                var finh = (fin != false) ? fin.height : 0;
 
                 switch ( this.settings.popup_position ){
                     case "auto":
-						
+                        
                         if ( viewport.right > (input_pos.right + pop.width()) && viewport.top < (input_pos.top - (finh/2) ) ){ /* esimesena proovitakse asetada paremale */
                             this.position_popup_right(pop, input, viewport, input_pos, fin);
                         } else if(viewport.left < (input_pos.left - pop.width()) && viewport.top < (input_pos.top - (finh/2) )  ){ /* siis vasakule */
                             this.position_popup_left(pop, input, viewport, input_pos, fin);
-                        } else if(viewport.top < (input_pos.top - pop.outerHeight())){ /* siis üles */
+                        } else if(viewport.top < (input_pos.top - pop.outerHeight())){ /* siis ï¿½les */
                             this.position_popup_top(pop, input, viewport, input_pos, fin);
-                        } else { /* kui midagi üle ei j22 siis alla (mahub tavaliselt alati kuna lehed üldiselt venivad) */
+                        } else { /* kui midagi ï¿½le ei j22 siis alla (mahub tavaliselt alati kuna lehed ï¿½ldiselt venivad) */
                             this.position_popup_bottom(pop, input, viewport, input_pos, fin);
                         }
                     break;
@@ -490,7 +496,7 @@
                 /* fix fin position */
                 if (this.settings.display_fin) {
                     var thefin = pop.find("."+this.settings.system_classes.fin),
-						fin_left_pos,fin_top_pos;
+                        fin_left_pos,fin_top_pos;
                     this.remove_fin_classes(thefin);
                     switch(fin_mode) {
                         case "bottom":
@@ -504,7 +510,7 @@
                         break;
                         case "top":
                             thefin.addClass(this.settings.system_classes.fin_top).addClass(this.settings.fin_top_class);
-                           	fin_left_pos = ((input_pos.right-input_pos.left) / 2) + (input_pos.left - newPos.left);
+                               fin_left_pos = ((input_pos.right-input_pos.left) / 2) + (input_pos.left - newPos.left);
                             thefin.css({
                                 left: fin_left_pos + "px",
                                 top: "auto",
@@ -514,12 +520,12 @@
                         case "left":
                             thefin.addClass(this.settings.system_classes.fin_left).addClass(this.settings.fin_left_class);
                             fin_top_pos = ((input_pos.bottom - input_pos.top) / 2) + (input_pos.top - newPos.top) - scroll_fix;
-							if ( fin_top_pos < 0 + (thefin.outerHeight() / 3) ) {
-								fin_top_pos = 0 + (thefin.outerHeight() / 3);
-							}
-							if ( fin_top_pos > ( newPos.bottom - newPos.top ) - (thefin.outerHeight() * 0.33) ) {
-								fin_top_pos = ( newPos.bottom - newPos.top ) - (thefin.outerHeight() * 0.33);
-							}
+                            if ( fin_top_pos < 0 + (thefin.outerHeight() / 3) ) {
+                                fin_top_pos = 0 + (thefin.outerHeight() / 3);
+                            }
+                            if ( fin_top_pos > ( newPos.bottom - newPos.top ) - (thefin.outerHeight() * 0.33) ) {
+                                fin_top_pos = ( newPos.bottom - newPos.top ) - (thefin.outerHeight() * 0.33);
+                            }
                             thefin.css({
                                 top: fin_top_pos + "px",
                                 left: "auto",
@@ -528,13 +534,13 @@
                         break;
                         case "right":
                             thefin.addClass(this.settings.system_classes.fin_right).addClass(this.settings.fin_right_class);
-                           	fin_top_pos = ((input_pos.bottom-input_pos.top) / 2) + (input_pos.top-newPos.top) - scroll_fix;
-							if ( fin_top_pos < 0 + (thefin.outerHeight() / 3) ) {
-								fin_top_pos = 0 + (thefin.outerHeight() / 3);
-							}
-							if ( fin_top_pos > ( newPos.bottom - newPos.top ) - (thefin.outerHeight() * 0.33) ) {
-								fin_top_pos = ( newPos.bottom - newPos.top ) - (thefin.outerHeight() * 0.33);
-							}
+                               fin_top_pos = ((input_pos.bottom-input_pos.top) / 2) + (input_pos.top-newPos.top) - scroll_fix;
+                            if ( fin_top_pos < 0 + (thefin.outerHeight() / 3) ) {
+                                fin_top_pos = 0 + (thefin.outerHeight() / 3);
+                            }
+                            if ( fin_top_pos > ( newPos.bottom - newPos.top ) - (thefin.outerHeight() * 0.33) ) {
+                                fin_top_pos = ( newPos.bottom - newPos.top ) - (thefin.outerHeight() * 0.33);
+                            }
                             thefin.css({
                                 top: fin_top_pos + "px",
                                 right: "auto",
@@ -597,13 +603,12 @@
                 return methods.init.apply( this, arguments );
             } else {
                 $.error( 'Method ' +  method + ' does not exist on jQuery.site_search' );
-				return null;
+                return null;
             }
         };
 
     };
 
-	window.apply_site_search_module = apply_site_search_module;
-	site_search_init.run();
-
+    window.apply_site_search_module = apply_site_search_module;
+    site_search_init.run();
 })();
