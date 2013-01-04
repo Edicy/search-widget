@@ -402,13 +402,13 @@
                 switch ( this.settings.popup_position ){
                     case "auto":
                         
-                        if ( viewport.right > (input_pos.right + pop.width()) && viewport.top < (input_pos.top - (finh/2) ) ){ /* esimesena proovitakse asetada paremale */
+                        if ( viewport.right > (input_pos.right + pop.width()) && viewport.top < (input_pos.top - (finh/2) ) ){
                             this.position_popup_right(pop, input, viewport, input_pos, fin);
-                        } else if(viewport.left < (input_pos.left - pop.width()) && viewport.top < (input_pos.top - (finh/2) )  ){ /* siis vasakule */
+                        } else if(viewport.left < (input_pos.left - pop.width()) && viewport.top < (input_pos.top - (finh/2) )  ){
                             this.position_popup_left(pop, input, viewport, input_pos, fin);
-                        } else if(viewport.top < (input_pos.top - pop.outerHeight())){ /* siis �les */
+                        } else if(viewport.top < (input_pos.top - pop.outerHeight())){
                             this.position_popup_top(pop, input, viewport, input_pos, fin);
-                        } else { /* kui midagi �le ei j22 siis alla (mahub tavaliselt alati kuna lehed �ldiselt venivad) */
+                        } else {
                             this.position_popup_bottom(pop, input, viewport, input_pos, fin);
                         }
                     break;
