@@ -1,4 +1,4 @@
-(function() {
+;(function() {
     var $ = null;
 
     /* initialisation module. does load all missing needed javascripts before applying jquery site_search module */
@@ -16,39 +16,39 @@
             init_complete: null
         },
 
-        run: function (){
+        run: function () {
             /* propagate preload functions before jquery initialized */
-            if ( typeof window.edys_site_search_options !='undefined' ) {
-                if ( typeof window.edys_site_search_options.autorun_init !='undefined' ) {
+            if (typeof window.edys_site_search_options !='undefined') {
+                if (typeof window.edys_site_search_options.autorun_init !='undefined') {
                     this.settings.autorun_init = window.edys_site_search_options.autorun_init;
                 }
-                if ( typeof window.edys_site_search_options.autorun_search !='undefined' ) {
+                if (typeof window.edys_site_search_options.autorun_search !='undefined') {
                     this.settings.autorun_search = window.edys_site_search_options.autorun_search;
                 }
             } else {
                 window.edys_site_search_options = {};
             }
 
-            if ( this.settings.autorun_init ){
+            if (this.settings.autorun_init) {
                 if (typeof window.edys_site_search_options.loaded == "undefined") {
                     window.edys_site_search_options.loaded = true;
-                    this.get_missing_scripts( function() {
+                    this.get_missing_scripts(function() {
                         $.extend(true, this.settings, window.edys_site_search_options);
                         apply_site_search_module($);
-                        if ( this.settings.autorun_search ) {
-                            $(document).ready( $.proxy(function() {
+                        if (this.settings.autorun_search) {
+                            $(document).ready($.proxy(function() {
                                 $(this.settings.search_form).site_search(this.settings);
-                                if(this.settings.init_complete){
+                                if (this.settings.init_complete) {
                                     this.settings.init_complete($);
                                 } else {
-                                    $('body').trigger('Edys_search_init_complete',$);
+                                    $('body').trigger('Edys_search_init_complete', $);
                                 }
                             },this));
                         } else {
-                            if(this.settings.init_complete){
+                            if (this.settings.init_complete) {
                                 this.settings.init_complete($);
                             } else {
-                                $('body').trigger('Edys_search_init_complete',$);
+                                $('body').trigger('Edys_search_init_complete', $);
                             }
                         }
                     });
@@ -57,10 +57,10 @@
         },
 
         get_missing_scripts: function(f) {
-            this.get_jquery( function() {
+            this.get_jquery(function() {
                 /* disable forms default action while loading if  */
-                if( site_search_init.settings.autorun_search ) {
-                    $( site_search_init.settings.search_form ).bind('submit.siteSearch', function() {
+                if (site_search_init.settings.autorun_search) {
+                    $(site_search_init.settings.search_form).bind('submit.siteSearch', function() {
                         return false;
                     });
                 }
@@ -93,20 +93,20 @@
             var old_doc_load = document.body.onload || function () {},
                 me = this;
                 
-            this.afterLoad(function(){
+            this.afterLoad(function() {
                 old_doc_load();
-                if ( window.jQuery === undefined ){
+                if (window.jQuery === undefined) {
                     me.load_script(me.settings.jquery_url,function() {
                        $ = window.jQuery.noConflict(true);
                        f();
                     });
-                } else if ( window.jQuery.fn.jquery < me.settings.jquery_atleast_version ) {
+                } else if (window.jQuery.fn.jquery < me.settings.jquery_atleast_version) {
                     var old_script = window.jQuery;
-                    var old$ = (window.$ !== undefined ) ? window.$ : null;
+                    var old$ = (window.$ !== undefined) ? window.$ : null;
                     me.load_script(me.settings.jquery_url,function() {
                        $ = window.jQuery.noConflict(true);
                        window.jQuery = old_script;
-                       if( old$ != null ) { window.$ = old$; }
+                       if (old$ != null) { window.$ = old$; }
                        f();
                     });
                 } else {
@@ -117,17 +117,16 @@
         },
 
         /* load google api and search api */
-        loadGoogle:  function(f) {
+        loadGoogle: function(f) {
             if (typeof(window.google) == 'undefined') {
                 $.getScript(this.settings.google_api_url, function() {
                     google = window.google;
-                    google.load('search', '1', {"nocss": true, 'callback':f});
+                    google.load('search', '1', {"nocss": true, 'callback': f});
                 });
             } else {
                 google.load('search', '1', {"nocss": true, 'callback': f});
             }
         }
-
     };
 
 
@@ -200,44 +199,44 @@
             this.form_element = form_element;
 
             /* run */
-            this.init( user_options );
+            this.init(user_options);
         };
 
         searcher.prototype = {
-            init: function( options ){
-                if ( options ) { $.extend( true, this.settings, options ); }
-                if ( this.settings.default_stylesheet_enabled ) { this.add_stylesheet(this.settings.default_stylesheet); }
+            init: function(options) {
+                if (options) { $.extend(true, this.settings, options); }
+                if (this.settings.default_stylesheet_enabled) { this.add_stylesheet(this.settings.default_stylesheet); }
 
                 var input_el = this.form_element.find(this.settings.search_input);
 
-                if ( !this.settings.without_popup ) {
+                if (!this.settings.without_popup) {
                     this.init_popup();
                 } else {
                     this.init_without_popup();
                 }
 
-                this.form_element.bind( 'submit', $.proxy(this.submit_form, this) );
-                this.form_element.data( 'EdysSearchObject', this );
+                this.form_element.bind('submit', $.proxy(this.submit_form, this));
+                this.form_element.data('EdysSearchObject', this);
             },
 
-            init_popup: function(){
-                var search_popup = $('<div></div>').addClass( this.settings.system_classes.popup )
-                                                   .addClass( this.settings.popup_class )
-                                                   .css( this.settings.default_popup_style ).css('position', this.settings.popup_css_positioning),
-                    search_iframe = $("<iframe></iframe>").addClass( this.settings.system_classes.masking_iframe)
+            init_popup: function() {
+                var search_popup = $('<div></div>').addClass(this.settings.system_classes.popup)
+                                                   .addClass(this.settings.popup_class)
+                                                   .css(this.settings.default_popup_style).css('position', this.settings.popup_css_positioning),
+                    search_iframe = $("<iframe></iframe>").addClass(this.settings.system_classes.masking_iframe)
                                                           .addClass(this.settings.masking_iframe_class).hide().css('position', this.settings.popup_css_positioning),
-                    noresults = $('<div></div>').addClass( this.settings.system_classes.noresults)
-                                                .addClass( this.settings.noresults_class)
-                                                .html( this.settings.texts.noresults ),
-                    close_btn = $("<div></div>").addClass( this.settings.system_classes.close_btn)
-                                                .addClass( this.settings.close_btn_class)
-                                                .css( this.settings.default_closebtn_style)
-                                                .html( this.settings.texts.close).bind('click.siteSearch', $.proxy( function(){
+                    noresults = $('<div></div>').addClass(this.settings.system_classes.noresults)
+                                                .addClass(this.settings.noresults_class)
+                                                .html(this.settings.texts.noresults),
+                    close_btn = $("<div></div>").addClass(this.settings.system_classes.close_btn)
+                                                .addClass(this.settings.close_btn_class)
+                                                .css(this.settings.default_closebtn_style)
+                                                .html(this.settings.texts.close).bind('click.siteSearch', $.proxy(function() {
                                                     this.popup_hide();
                                                 },this)),
-                    fin = $("<div></div>").addClass( this.settings.system_classes.fin )
-                                          .addClass( this.settings.fin_class )
-                                          .css( this.settings.fin_style );
+                    fin = $("<div></div>").addClass(this.settings.system_classes.fin)
+                                          .addClass(this.settings.fin_class)
+                                          .css(this.settings.fin_style);
 
                 $(document.body).prepend(search_iframe,search_popup);
                 this.search_popup = search_popup;
@@ -254,7 +253,7 @@
                 search_popup.prepend(close_btn,noresults);
 
                 /* add fin if needed */
-                if ( this.settings.display_fin ) { search_popup.prepend(fin); }
+                if (this.settings.display_fin) { search_popup.prepend(fin); }
 
                 /* orientation and resize functions */
                 if ("onorientationchange" in window) {
@@ -262,13 +261,13 @@
                         this.resize_window(search_popup);
                     }, this));
                 } else {
-                    $(window).bind('resize.siteSearch',$.proxy( function() {
+                    $(window).bind('resize.siteSearch',$.proxy(function() {
                         this.resize_window(search_popup);
                     }, this));
                 }
             },
 
-            init_without_popup: function(){
+            init_without_popup: function() {
                 this.configure_google_search({
                    popup_element: $("#"+this.settings.without_popup_element_id),
                    hostname: this.settings.host_name,
@@ -279,41 +278,44 @@
                 $("#"+this.settings.without_popup_element_id).find(".gsc-search-box").hide();
             },
 
-            popup_hide: function(){
+            popup_hide: function() {
                 var sd = this.settings;
 
-                if ( sd.sideclick_enabled ) {
-                    $( document.body ).unbind( 'click.siteSearch' );
+                if (sd.sideclick_enabled) {
+                    $(document.body).unbind('click.siteSearch');
                 }
 
-                $( '.'+sd.system_classes.popup ).hide();
-                $( '.'+sd.system_classes.masking_iframe ).hide();
+                $('.'+sd.system_classes.popup).hide();
+                $('.'+sd.system_classes.masking_iframe).hide();
                 this.current_input = null;
             },
 
             resize_window: function(pop) {
                 var inp = this.current_input;
-                if(inp !== null){
+                if (inp !== null) {
                     this.position_popup(pop, inp);
                 }
             },
 
-            submit_form: function(){
+            submit_form: function() {
                 this.form_element.trigger('beforeSearch');
-                var input_el = this.form_element.find( this.settings.search_input ),
+                var input_el = this.form_element.find(this.settings.search_input),
                     pos = input_el.offset(),
                     searchstring = input_el.val();
 
                 pos.height = input_el.outerHeight();
-                pos.width= input_el.outerWidth();
-                this.search_control.setSearchCompleteCallback( this, $.proxy( function() { this.search_complete(input_el); } , this) );
+                pos.width = input_el.outerWidth();
+                
+                this.search_control.setSearchCompleteCallback(this, $.proxy(function() {
+                    this.search_complete(input_el);
+                }, this));
                 this.search_control.execute(searchstring);
                 return false;
             },
 
             configure_google_search: function(opts) {
-                var s_c = this.search_control   = new google.search.SearchControl(),
-                    s_o = this.search_options   = new google.search.SearcherOptions(),
+                var s_c = this.search_control = new google.search.SearchControl(),
+                    s_o = this.search_options = new google.search.SearcherOptions(),
                     s_w = this.search_websearch = new google.search.WebSearch();
 
                 s_o.setExpandMode(google.search.SearchControl.EXPAND_MODE_OPEN);
@@ -322,7 +324,7 @@
                 s_c.addSearcher(s_w, s_o);
                 s_c.setSearchCompleteCallback(this, $.proxy(opts.complete_function,this));
 
-                switch(opts.link_target) {
+                switch (opts.link_target) {
                     case '_blank':
                         s_c.setLinkTarget(google.search.Search.LINK_TARGET_BLANK);
                     break;
@@ -335,13 +337,15 @@
                     default:
                         s_c.setLinkTarget(google.search.Search.LINK_TARGET_SELF);
                 }
+                
                 s_c.draw(opts.popup_element.get(0));
-                if( opts.popup_element.find('.gsc-control').get(0).scrollIntoView ) {
-                    opts.popup_element.find('.gsc-control').get(0).scrollIntoView = function(){ return false; };
+                
+                if (opts.popup_element.find('.gsc-control').get(0).scrollIntoView) {
+                    opts.popup_element.find('.gsc-control').get(0).scrollIntoView = function() { return false; };
                 }
             },
 
-            search_complete: function(input){
+            search_complete: function(input) {
                 var pop = this.search_popup,
                     nr_of_results = (!this.settings.without_popup) ? pop.find(".gsc-stats").html() : $("#" + this.settings.without_popup_element_id).find(".gsc-stats").html(),
                     noresults_el = (!this.settings.without_popup) ? pop.find(' .'+this.settings.system_classes.noresults) : $("#" + this.settings.without_popup_noresults_id);
@@ -353,17 +357,16 @@
                 }
 
                 if (!this.settings.without_popup) {
-                    pop.css( {visibility: "hidden"} ).show();
-                    if ( typeof(input) != 'undefined' ){
-                        this.position_popup ( pop, input );
+                    pop.css({visibility: "hidden"}).show();
+                    if (typeof(input) != 'undefined') {
+                        this.position_popup(pop, input);
                         this.search_iframe.show();
                         this.current_input = input;
-                        if ( this.settings.sideclick_enabled ) {
-                            $( document.body ).bind('click.siteSearch', $.proxy(function(event) {
-                                if ( $(event.target).parents().filter(this.search_popup).length == 0 && event.target != this.search_popup.get(0) ) {
+                        if (this.settings.sideclick_enabled) {
+                            $(document.body).bind('click.siteSearch', $.proxy(function(event) {
+                                if ($(event.target).parents().filter(this.search_popup).length == 0 && event.target != this.search_popup.get(0)) {
                                     this.popup_hide();
                                 }
-
                             },this));
                         }
                     }
@@ -373,7 +376,7 @@
                 this.form_element.trigger('afterSearch');
             },
 
-            position_popup: function ( pop, input ) {
+            position_popup: function(pop, input) {
                 var viewport = {
                         top: $(window).scrollTop(),
                         left: $(window).scrollLeft(),
@@ -388,7 +391,7 @@
                 input_pos.width = input.outerWidth();
                 input_pos.height = input.outerHeight();
 
-                if ( this.settings.display_fin ){
+                if (this.settings.display_fin) {
                     var thefin = $("." + this.settings.system_classes.fin);
                         fin = {
                             width: thefin.outerWidth() + parseInt(thefin.css("borderLeftWidth"),10) + parseInt(thefin.css("borderRightWidth"),10),
@@ -399,14 +402,14 @@
                 }
                 var finh = (fin != false) ? fin.height : 0;
 
-                switch ( this.settings.popup_position ){
+                switch (this.settings.popup_position) {
                     case "auto":
                         
-                        if ( viewport.right > (input_pos.right + pop.width()) && viewport.top < (input_pos.top - (finh/2) ) ){
+                        if (viewport.right > (input_pos.right + pop.width()) && viewport.top < (input_pos.top - (finh/2))) {
                             this.position_popup_right(pop, input, viewport, input_pos, fin);
-                        } else if(viewport.left < (input_pos.left - pop.width()) && viewport.top < (input_pos.top - (finh/2) )  ){
+                        } else if (viewport.left < (input_pos.left - pop.width()) && viewport.top < (input_pos.top - (finh/2))) {
                             this.position_popup_left(pop, input, viewport, input_pos, fin);
-                        } else if(viewport.top < (input_pos.top - pop.outerHeight())){
+                        } else if (viewport.top < (input_pos.top - pop.outerHeight())) {
                             this.position_popup_top(pop, input, viewport, input_pos, fin);
                         } else {
                             this.position_popup_bottom(pop, input, viewport, input_pos, fin);
@@ -467,31 +470,31 @@
                 this.fix_bounds_and_position(pop, newPos, viewport, input_pos, "bottom", fin);
             },
 
-            fix_bounds_and_position: function ( pop, pos, viewport, input_pos, fin_mode, fin ) {
+            fix_bounds_and_position: function(pop, pos, viewport, input_pos, fin_mode, fin) {
                 var newPos = pos,
-                    scroll_fix = (this.settings.popup_css_positioning == 'absolute') ? 0 :  $(window).scrollTop() ;
+                    scroll_fix = (this.settings.popup_css_positioning == 'absolute') ? 0 :  $(window).scrollTop();
 
                 /* fix popup position */
-                if ( newPos.left < viewport.left + this.settings.popup_min_margin ) {
+                if (newPos.left < viewport.left + this.settings.popup_min_margin) {
                     newPos.left = viewport.left + this.settings.popup_min_margin;
-                } else if ( newPos.right > viewport.right - this.settings.popup_min_margin ) {
+                } else if (newPos.right > viewport.right - this.settings.popup_min_margin) {
                     newPos.left =  viewport.right - pop.outerWidth() - this.settings.popup_min_margin;
                 }
                 
-                if(scroll_fix != 0) {
+                if (scroll_fix != 0) {
                     newPos.top -= scroll_fix;
                     newPos.bottom -= scroll_fix;
                 }
 
-                if ( newPos.top > (viewport.bottom - scroll_fix) - pop.outerHeight() - this.settings.popup_min_margin && fin_mode != "bottom" && fin_mode != "top" ) {
-                    if(input_pos.bottom + (pop.outerHeight() * 0.05) > (viewport.bottom - scroll_fix)  - this.settings.popup_min_margin){
+                if (newPos.top > (viewport.bottom - scroll_fix) - pop.outerHeight() - this.settings.popup_min_margin && fin_mode != "bottom" && fin_mode != "top") {
+                    if (input_pos.bottom + (pop.outerHeight() * 0.05) > (viewport.bottom - scroll_fix)  - this.settings.popup_min_margin) {
                         newPos.top = input_pos.bottom + (pop.outerHeight() * 0.05) - pop.outerHeight() - scroll_fix;
                     } else {
                         newPos.top = viewport.bottom - pop.outerHeight() - this.settings.popup_min_margin - scroll_fix;
                     }
                 }
 
-                if ( newPos.top < this.settings.popup_min_margin ) { newPos.top = this.settings.popup_min_margin; }
+                if (newPos.top < this.settings.popup_min_margin) { newPos.top = this.settings.popup_min_margin; }
 
                 /* fix fin position */
                 if (this.settings.display_fin) {
@@ -520,11 +523,11 @@
                         case "left":
                             thefin.addClass(this.settings.system_classes.fin_left).addClass(this.settings.fin_left_class);
                             fin_top_pos = ((input_pos.bottom - input_pos.top) / 2) + (input_pos.top - newPos.top) - scroll_fix;
-                            if ( fin_top_pos < 0 + (thefin.outerHeight() / 3) ) {
+                            if (fin_top_pos < 0 + (thefin.outerHeight() / 3)) {
                                 fin_top_pos = 0 + (thefin.outerHeight() / 3);
                             }
-                            if ( fin_top_pos > ( newPos.bottom - newPos.top ) - (thefin.outerHeight() * 0.33) ) {
-                                fin_top_pos = ( newPos.bottom - newPos.top ) - (thefin.outerHeight() * 0.33);
+                            if (fin_top_pos > (newPos.bottom - newPos.top) - (thefin.outerHeight() * 0.33)) {
+                                fin_top_pos = (newPos.bottom - newPos.top) - (thefin.outerHeight() * 0.33);
                             }
                             thefin.css({
                                 top: fin_top_pos + "px",
@@ -535,11 +538,11 @@
                         case "right":
                             thefin.addClass(this.settings.system_classes.fin_right).addClass(this.settings.fin_right_class);
                                fin_top_pos = ((input_pos.bottom-input_pos.top) / 2) + (input_pos.top-newPos.top) - scroll_fix;
-                            if ( fin_top_pos < 0 + (thefin.outerHeight() / 3) ) {
+                            if (fin_top_pos < 0 + (thefin.outerHeight() / 3)) {
                                 fin_top_pos = 0 + (thefin.outerHeight() / 3);
                             }
-                            if ( fin_top_pos > ( newPos.bottom - newPos.top ) - (thefin.outerHeight() * 0.33) ) {
-                                fin_top_pos = ( newPos.bottom - newPos.top ) - (thefin.outerHeight() * 0.33);
+                            if (fin_top_pos > (newPos.bottom - newPos.top) - (thefin.outerHeight() * 0.33)) {
+                                fin_top_pos = (newPos.bottom - newPos.top) - (thefin.outerHeight() * 0.33);
                             }
                             thefin.css({
                                 top: fin_top_pos + "px",
@@ -563,19 +566,19 @@
                 });
             },
 
-            remove_fin_classes: function ( fin ) {
-                fin.removeClass( this.settings.system_classes.fin_left );
-                fin.removeClass( this.settings.system_classes.fin_right );
-                fin.removeClass( this.settings.system_classes.fin_top );
-                fin.removeClass( this.settings.system_classes.fin_bottom );
+            remove_fin_classes: function(fin) {
+                fin.removeClass(this.settings.system_classes.fin_left);
+                fin.removeClass(this.settings.system_classes.fin_right);
+                fin.removeClass(this.settings.system_classes.fin_top);
+                fin.removeClass(this.settings.system_classes.fin_bottom);
             },
 
             add_stylesheet: function(source) {
-                if( $(document.head).find('.'+ this.settings.system_classes.default_stylesheet ).length == 0 ){
+                if ($(document.head).find('.'+ this.settings.system_classes.default_stylesheet).length == 0) {
                     var styles = $("head").children("style, link"),
-                        style = $("<style>" + source + "</style>").attr("type", "text/css").addClass( this.settings.system_classes.default_stylesheet );
+                        style = $("<style>" + source + "</style>").attr("type", "text/css").addClass(this.settings.system_classes.default_stylesheet);
 
-                    if ( styles.length > 0 ) {
+                    if (styles.length > 0) {
                         styles.eq(0).before(style);
                     } else {
                         $("head").append(style);
@@ -585,8 +588,8 @@
         };
 
         var methods = {
-            init: function( options ) {
-                return this.each(function(){
+            init: function(options) {
+                return this.each(function() {
                     new searcher($(this), options);
                 });
             },
@@ -596,13 +599,13 @@
             }
         };
 
-        $.fn.site_search = function( method ) {
-            if ( methods[method] ) {
-                return methods[method].apply( this, Array.prototype.slice.call( arguments, 1 ));
-            } else if ( typeof method === 'object' || ! method ) {
-                return methods.init.apply( this, arguments );
+        $.fn.site_search = function(method) {
+            if (methods[method]) {
+                return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
+            } else if (typeof method === 'object' || ! method) {
+                return methods.init.apply(this, arguments);
             } else {
-                $.error( 'Method ' +  method + ' does not exist on jQuery.site_search' );
+                $.error('Method ' +  method + ' does not exist on jQuery.site_search');
                 return null;
             }
         };
