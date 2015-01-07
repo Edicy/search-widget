@@ -1,59 +1,77 @@
 .voog-search-modal {
   position: absolute;
-  -webkit-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -o-box-sizing: border-box;
-  box-sizing: border-box;
-  width: 300px;
-  padding: 20px;
-  background: white;
-  box-shadow: 0 0 30px rgba(0,0,0,0.5);
+  bottom: 50px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 350px;
   max-width: 100%;
   max-height: 300px;
-  overflow-x: hidden;
-  overflow-y: auto; 
-  color: #333;
+  margin-top: 20px;
+  padding: 20px;
+  color: #333333;
+  color: rgba(0,0,0,.8);
+  background-color: #ffffff;
+  background-color: rgba(255,255,255,1);
+  box-sizing: border-box;
+  box-shadow: 0 0 30px #7f7f7f;
+  box-shadow: 0 0 30px rgba(0,0,0,.5);
 }
-.voog-search-modal a {
-  color: #333;
-  text-decoration: none;
+.voog-search-mobile-mode {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: auto;
+  max-height: none;
+  margin-top: 10px;
 }
+
+.editmode .voog-search-mobile-mode {
+  bottom: 40px;
+}
+
+.voog-search-modal.no-content {
+  text-align: center;
+  bottom: auto;
+}
+
+.voog-search-modal-result {
+  margin-top: 1.6em;
+}
+
 .voog-search-modal h3 {
   padding: 0;
-  margin: 0.5em 0 0 0;
+  margin-top: .5em;
+  margin-bottom: 0;
 }
-.voog-search-modal.voog-search-mobile-mode {
-  width: auto;
-  left:0;
-  right: 0;
+.voog-search-modal-result h3:first-child {
+  margin-top: 0;
 }
-
-.voog-search-modal.no-content { 
-  text-align: center;
-  padding-bottom: 1em;
+.voog-search-modal-result a {
+  color: #333333;
+  color: rgba(0,0,0,.8);
+  text-decoration: none;
 }
-
-.voog-search-modal em {
-  font-weight: bold;
+.voog-search-modal-result em {
   font-style: normal;
-  background-color: yellow;
-  background-color: rgba(255, 220, 0, 0.5);
+  background-color: #F9EC5A;
+  background-color: rgba(249,236,90,.5);
   border-radius: 2px;
-  padding: 0 0.2em;
+  padding: 0 .2em;
 }
-.voog-search-modal-result {
-    margin-top: 1.6em;
-}
+
 .voog-search-modal-result:first-child {
-    margin-top: 0;
+  margin-top: 0;
 }
 
 .voog-search-loader {
   display: none;
   text-align: center;
   height: 1em;
-  background: url('dotLoader.svg') no-repeat center;
+  background-image: url('dotLoader.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+
 }
 .voog-search-modal.loading .voog-search-loader {
   display: block;
