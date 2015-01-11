@@ -1,13 +1,11 @@
 .voog-search-modal {
   position: absolute;
-  bottom: 50px;
   overflow-x: hidden;
   overflow-y: auto;
   width: 350px;
   max-width: 100%;
   max-height: 300px;
   margin-top: 20px;
-  padding: 20px;
   color: #333333;
   color: rgba(0,0,0,.8);
   background-color: #ffffff;
@@ -28,6 +26,10 @@
 
 .editmode .voog-search-mobile-mode {
   bottom: 40px;
+}
+
+.voog-search-modal-results {
+  padding: 20px;
 }
 
 .voog-search-modal.no-content {
