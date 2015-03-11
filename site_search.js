@@ -27,9 +27,13 @@
     }
 
     var init = function () {
-        var search = new VoogSearch(document.querySelector('.edys-search'), {
-            lang: getCookie('site_lang')
-        });
+        var searchers = document.querySelectorAll('.edys-search');
+
+        for (var i = 0, imax = searchers.length; i < imax; i++) {
+            new VoogSearch(searchers[i], {
+                lang: getCookie('site_lang')
+            });
+        }
     };
 
     var load = function() {
